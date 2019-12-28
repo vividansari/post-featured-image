@@ -1,0 +1,15 @@
+woocommerce/
+woocommerce-bookings/
+frontend-dashboard/
+woocommerce-admin/
+woocommerce-gateway-stripe/
+woocommerce-services/
+woocommerce-shipstation-integration/
+classic-editor/
+auto-featured-image-from-title-uploads/
+auto-featured-image-from-title-pro-png-layer/
+auto-featured-image-from-title-pro/
+akismet/
+hello.php
+index.php
+*.zip
