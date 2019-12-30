@@ -6,10 +6,13 @@
 	</td>
 </tr>
 
+
 <tr>
-	<th><label for="ilc_tag_class">Tags with CSS classes:</label></th>
+	<th><label for="grp_tag"><?php echo __('GoodReads Tag Total Page','grp'); ?></label></th>
 	<td>
-		<input id="ilc_tag_class" name="ilc_tag_class" type="checkbox" <?php if ( $settings["ilc_tag_class"] ) echo 'checked="checked"'; ?> value="true" /> 
-		<span class="description">Output each post tag with a specific CSS class using its slug.</span>
+		<input type="number" name="grp_tag_total_page" value="<?php if($settings['grp_tag_total_page']) echo $settings['grp_tag_total_page']; ?>">
+		<span class="description"><?php echo __('Add your goodread tag total page, which we are used in collect the data','grp'); ?></span>
 	</td>
 </tr>
+
+

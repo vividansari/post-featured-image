@@ -9,10 +9,11 @@
 		 ?>
 	</td>
 </tr>
+
 <tr>
-	<th><label for="ilc_ga">Insert tracking code:</label></th>
+	<th><label for="grp_copyright_text"><?php echo __('Copyright Text','grp'); ?></label></th>
 	<td>
-		<textarea id="ilc_ga" name="ilc_ga" cols="60" rows="5"><?php echo esc_html( stripslashes( $settings["ilc_ga"] ) ); ?></textarea><br/>
-		<span class="description">Enter your Google Analytics tracking code:</span>
+		<input type="text" name="grp_copyright_text" value="<?php if($settings['grp_copyright_text']) echo $settings['grp_copyright_text']; ?>">
+		<div class="description"><?php echo __('Add your copyright text here it will be display in all images.','grp'); ?></div>
 	</td>
 </tr>

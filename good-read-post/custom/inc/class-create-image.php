@@ -9,7 +9,7 @@ class vaGenerateImage
 			
 	}
 
-	public function get_image_from_pixbay(){
+	public function get_image_from_pixbay($post_id = ''){
 		$settings = get_option( "grp_plugin_settings" );
 		$pixbay_api_key = $settings['grp_pixabay_api'];
 
@@ -45,16 +45,19 @@ class vaGenerateImage
 		        }
 		    }
 	    }
-	    echo "bg-image===>>".$backgroundimg.'<br/>';
+	    
 	    if( !empty( $backgroundimg ) ){
-	    	$this->generate_image($backgroundimg);
+	    	$this->generate_image($backgroundimg, $post_id );
+	    }else{
+	    	$temp_file = GRP_IMAGE_DIR . 'temp.jpg';
+	    	$this->generate_image($temp_file, $post_id );
 	    }
 	}
 
 	public static function generate_image( $backgroundimg , $post_id = '' ){
-		echo "Genarating image function<br/>";
-		 echo "bg-image===>>".$backgroundimg.'<br/>';
-
+		$settings = get_option( "grp_plugin_settings" );
+		
+		
 		$va_image_resize = 'crop';
 	    $auto_image_width = 1130;
 	    $auto_image_height = 580;
@@ -113,15 +116,15 @@ class vaGenerateImage
 	    }
 
    
-	    echo "after putonimage--> $new_featured_img<br/>";
+	   
 	    if($auto_image_write_text=='yes'){
-	       self::put_text_on_image($new_featured_img);
+	       self::put_text_on_image($new_featured_img,$post_id);
 	    }
 	}
 
 	public static function put_text_on_image($new_featured_img , $post_id = ''){
-		echo "Put text on image <br/>";
-		 echo "after putonimage--> $new_featured_img<br/>";
+		$settings = get_option( "grp_plugin_settings" );
+		$copyright_text = $settings['grp_copyright_text'];
 		#comman
 		$auto_image_write_text = 'yes';
 		$auto_image_width = 1130;
@@ -140,9 +143,11 @@ class vaGenerateImage
 		$auto_image_right_padding = 10;
 
 		#$post data
+		$post = get_post( $post_id );
+		$content = $post->post_content;
 		#get this data from the post
 	    $auto_image_before_text  = '';
-	    $auto_image_post_text  = 'Alauddin Ansari';//post title
+	    $auto_image_post_text  = $content;//'Alauddin Ansari';//post title
 	    $auto_image_after_text = '';
 
 	    #text settings
@@ -396,23 +401,33 @@ class vaGenerateImage
         $i++;
         }
 
-       
-        $white = imagecolorallocate($new_featured_img, 255, 255, 255);
-		$txt = "copyright";
-        imagettftext($new_featured_img, 10, 0, 5, $auto_image_text_y[0]+$copy_right_offset, $copyright_color, $font, $txt);
+       if( !empty( $copyright_text ) ){
+       		$y_last_key = end(array_keys($auto_image_text_y));
 
-        self::add_image_in_wp( $new_featured_img,'',$text_color,$border_color,$shadow_color );
+	        $white = imagecolorallocate($new_featured_img, 255, 255, 255);
+			$txt = $copyright_text;
+	        imagettftext($new_featured_img, 10, 0, 5, $auto_image_text_y[$y_last_key]+$copy_right_offset, $copyright_color, $font, $txt);
+       }
+       	
+
+        self::add_image_in_wp( $new_featured_img,$post_id,$text_color,$border_color,$shadow_color );
 
 	}
 
 	public function add_image_in_wp( $new_featured_img , $post_id = '' , $text_color, $border_color, $shadow_color){
+		$settings = get_option( "grp_plugin_settings" );
 
 		$auto_image_filetype = 'jpg';
 		$auto_image_quality = 95;
 		$auto_image_write_text = 'yes';
 
+		$auto_image_set_as_featured = "yes";
+
 		#post_data
-		$auto_image_post_text = "Alauddin Ansari";
+		##$post data
+		$post = get_post( $post_id );
+		$content = $post->post_content;
+		$auto_image_post_text = $content; //"Alauddin Ansari";
 
 		if($auto_image_post_title == ''){
         	$auto_image_post_title = 'image';
@@ -420,8 +435,8 @@ class vaGenerateImage
 
 	    // Save the image
 	    $attachment_array = array(
-	        'title'          => $auto_image_post_title,
-	        'alt'            => $auto_image_post_title,
+	        'title'          => $auto_image_post_text,
+	        'alt'            => $auto_image_post_text,
 	        'caption'        => $auto_image_post_text,
 	        'description'    => $auto_image_post_text,
 	        'filename'       => $auto_image_post_title,
@@ -485,21 +500,21 @@ class vaGenerateImage
 	        'post_content'   => $attachment_array['description'],
 	        'post_status'    => 'inherit'
 	        );
-	    $attach_id = wp_insert_attachment( $attachment, $newimg, $post->ID );
+	    $attach_id = wp_insert_attachment( $attachment, $newimg, $post_id );
 	    require_once( ABSPATH . 'wp-admin/includes/image.php' );
 	    $attach_data = wp_generate_attachment_metadata( $attach_id, $newimg );
 	    wp_update_attachment_metadata( $attach_id, $attach_data );
 	    update_post_meta( $attach_id, '_wp_attachment_image_alt', wp_slash($attachment_array['alt']) );
-	    echo "attach_id == $attach_id -- done";
+	   
 	    // Set the image as the featured image
 	    if($auto_image_set_as_featured == 'yes'){
-	       // set_post_thumbnail( $post->ID, $attach_id );
-	        }
+	       set_post_thumbnail( $post_id, $attach_id );
+	    }
 
 	    // Insert the image into the post
 	    if($auto_image_insert_into_post == 'yes'){
-	        //update_post_meta( $post->ID, 'add_before_post', $newimg_url );
-	        }
+	        update_post_meta( $post_id, 'add_before_post', $newimg_url );
+	    }
 	}
 
 	public function va_hex2rgbcolors( $c ){

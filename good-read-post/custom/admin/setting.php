@@ -31,6 +31,28 @@ class GrpPluginSettingTab
 		global $pagenow;
 		$settings = get_option( "grp_plugin_settings" );
 		
+		#for cron reset parameters if they change old data
+		if(isset( $_POST['grp_tag'] ) && ( $settings['grp_tag'] == $_POST['grp_tag'] ) ){
+			#check its change the page number
+			if( isset( $_POST['grp_tag_total_page'] ) && ( $settings['grp_tag_total_page'] == $_POST['grp_tag_total_page'] ) ){
+
+			}else if( isset( $_POST['grp_tag_total_page'] ) ){
+				
+				if( $setting['grp_tag_total_page'] < $_POST['grp_tag_total_page'] ){
+					update_option( 'grp_cron_completed', 'no' );
+				}
+
+			}
+		}else if( isset( $_POST['grp_tag'] ) ){
+			#reset all parameters
+			update_option( 'grp_cron_current_page', 1 );
+			update_option( 'grp_cron_completed', 'no' );	
+		}else{
+			#reset all parameters
+			update_option( 'grp_cron_current_page', 1 );
+			update_option( 'grp_cron_completed', 'no' );	
+		}
+
 		if ( $pagenow == 'admin.php' && $_GET['page'] == 'grp-settings' ){ 
 			if ( isset ( $_GET['tab'] ) )
 		        $tab = $_GET['tab']; 
@@ -39,12 +61,13 @@ class GrpPluginSettingTab
 
 		    switch ( $tab ){ 
 		        case 'general' :
-					$settings['ilc_tag_class']	  = $_POST['ilc_tag_class'];
+					//$settings['ilc_tag_class']	  = $_POST['ilc_tag_class'];
 					$settings['grp_tag'] = $_POST['grp_tag'];
+					$settings['grp_tag_total_page'] = $_POST['grp_tag_total_page'];
 				break; 
 		        case 'image' :
 		        	$settings['grp_pixabay_api']  = $_POST['grp_pixabay_api'];
-					
+		        	$settings['grp_copyright_text']  = $_POST['grp_copyright_text'];
 				break;
 				case 'homepage' : 
 					$settings['ilc_intro']	  = $_POST['ilc_intro'];
@@ -52,12 +75,7 @@ class GrpPluginSettingTab
 		    }
 		}
 		
-		if( !current_user_can( 'unfiltered_html' ) ){
-			if ( $settings['ilc_ga']  )
-				$settings['ilc_ga'] = stripslashes( esc_textarea( wp_filter_post_kses( $settings['ilc_ga'] ) ) );
-			if ( $settings['ilc_intro'] )
-				$settings['ilc_intro'] = stripslashes( esc_textarea( wp_filter_post_kses( $settings['ilc_intro'] ) ) );
-		}
+		
 
 		$updated = update_option( "grp_plugin_settings", $settings );
 	}

@@ -12,4 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 require GRP_PLUGIN_INC_DIR.'class-create-image.php';
+require GRP_PLUGIN_INC_DIR.'class-grp-post.php';
+require GRP_PLUGIN_INC_DIR.'class-grp-cron.php';
 ?>

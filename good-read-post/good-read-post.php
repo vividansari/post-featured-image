@@ -37,6 +37,7 @@ final class grp_post {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'grp_post_setup' ), -1 );
+		add_action('init', array( $this, 'grp_setup_log_dir' ) );
 		require_once( 'custom/functions.php' );
 		if(is_admin()){
 			require_once('custom/admin/setting.php');
@@ -69,6 +70,34 @@ final class grp_post {
 	public function grp_post_js() {
 		wp_enqueue_script( 'custom-js', plugins_url( '/custom/assets/js/custom.js', __FILE__ ), array( 'jquery' ) );
 	}
+
+
+	public function grp_setup_log_dir(){
+	      $dir = plugin_dir_path(__FILE__);
+	      $plugin_url = plugin_dir_url(__FILE__);
+	      $log_dir = $dir."log/" ;
+
+	      if ( ! is_dir( $log_dir ) ) {
+	        wp_mkdir_p( $log_dir, 0777 );
+
+	        if ( $file_handle = @fopen( trailingslashit( $log_dir ) .'update_log.log', 'w' ) ) {
+	          fwrite( $file_handle, 'testing' );
+	          fclose( $file_handle );
+	        }
+
+	      }
+	}
+
+	public static function grp_log($str) {
+
+      $d = date("j-M-Y H:i:s");
+      $dir = plugin_dir_path(__FILE__);
+      $plugin_url =  plugin_dir_url(__FILE__);
+      $product_dir = $dir."log" ;
+      error_log('['.$d.']'. $str.PHP_EOL, 3, $product_dir."/update_log.log");
+  	}
+
+
 	
 } // End Class
 
