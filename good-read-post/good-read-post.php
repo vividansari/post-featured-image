@@ -48,8 +48,9 @@ final class grp_post {
 	 * Setup all the things
 	 */
 	public function grp_post_setup() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'grp_post_css' ), 999 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'grp_post_js' ) );
+		//add_action( 'wp_enqueue_scripts', array( $this, 'grp_post_css' ), 999 );
+		//add_action( 'wp_enqueue_scripts', array( $this, 'grp_post_js' ) );
+		add_action( 'admin_enqueue_scripts' , array( $this, 'grp_post_admin_script' )  );
 		
 	}
 
@@ -60,6 +61,13 @@ final class grp_post {
 	 */
 	public function grp_post_css() {
 		wp_enqueue_style( 'custom-css', plugins_url( '/custom/assets/css/style.css', __FILE__ ) );
+	}
+
+	public function grp_post_admin_script(){
+		//echo plugins_url( '/custom/admin/assets/grp-admin.js', __FILE__ );die;
+		//wp_enqueue_script( 'grp_admin_js', plugins_url( '/custom/admin/assets/grp-admin.js', __FILE__ ));
+		wp_register_script( 'grp_admin_js', plugins_url( '/custom/admin/assets/grp-admin.js', __FILE__ ), array( 'wp-color-picker' ) );
+		//wp_register_style( 'grp-admin-css', plugins_url( '/custom/admin/assets/grp-admin.css', __FILE__ ));
 	}
 
 	/**

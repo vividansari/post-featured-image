@@ -7,7 +7,7 @@ class grpCron
 	
 	function __construct(){
 		#add action for adding the schedule event
-		add_action('wp', array( $this ,'generate_cron_schedule') );	
+		add_action('admin_init', array( $this ,'generate_cron_schedule') );	
 
 		add_filter( 'cron_schedules', array( $this, 'grp_cron_interval' ) );
 
@@ -17,14 +17,14 @@ class grpCron
 
 	public function generate_cron_schedule(){
 		 if ( !wp_next_scheduled( 'grp_get_data_cron' ) ) {
-	        wp_schedule_event( current_time( 'timestamp' ), 'every_three_minutes', 'grp_get_data_cron');
+	        wp_schedule_event( current_time( 'timestamp' ), 'every_five_minutes', 'grp_get_data_cron');
 	    }
 	}
 
 	public function grp_cron_interval( $schedules ){
-		$schedules['every_three_minutes'] = array(
-	      'interval'  => 180,
-	      'display'   => __( 'Every 3 Minutes', 'grp' )
+		$schedules['every_five_minutes'] = array(
+	     	'interval'  => 300,
+	     	'display'   => __( 'Every 5 Minutes', 'grp' )
 	    );
 	   
 	    return $schedules;

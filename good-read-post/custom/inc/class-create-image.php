@@ -10,17 +10,21 @@ class vaGenerateImage
 	}
 
 	public function get_image_from_pixbay($post_id = ''){
+		
 		$settings = get_option( "grp_plugin_settings" );
 		$pixbay_api_key = $settings['grp_pixabay_api'];
+		$q_tag = $settings['grp_pixabay_q_tag'];
+		$cat = $settings['grp_pixabay_cat'];
 
 		#search paramenters
-		$query = 'love';
+		$query = !empty($q_tag) ? $q_tag : 'love';
+		$cat = !empty($cat) ? '&category='.$cat : '';
 
 		$done = false;
 	    $tries = 0;
 	    while(!$done && $tries < 5){
 		    $tries++;
-		    $search = 'https://pixabay.com/api/?key='.$pixbay_api_key.'&q='.$query.'&image_type=photo&per_page=100&order=popular';
+		    $search = 'https://pixabay.com/api/?key='.$pixbay_api_key.'&q='.$query.'&image_type=photo&per_page=100&order=popular'.$cat;
 
 		    $result = wp_remote_request($search);
 		    $data = json_decode($result['body'], true);
@@ -125,6 +129,20 @@ class vaGenerateImage
 	public static function put_text_on_image($new_featured_img , $post_id = ''){
 		$settings = get_option( "grp_plugin_settings" );
 		$copyright_text = $settings['grp_copyright_text'];
+		$image_text_color = $settings['grp_text_color'];
+		$image_text_shadow_color = $settings['grp_text_shadow_color'];
+		$image_text_size = $settings['grp_text_size'];
+		$image_copyrighttext_size = $settings['grp_copyright_text_size'];
+		$image_copyright_color = $settings['grp_copy_right_text_color'];
+
+		$text_transform = $settings['grp_text_transform'];
+		$text_x_position = $settings['grp_x_position'];
+		$text_y_position = $settings['grp_y_position'];
+
+ 		$text_padding_top= $settings['grp_padding_top'];
+ 		$text_padding_bottom= $settings['grp_padding_bottom'];
+ 		$text_padding_left= $settings['grp_padding_left'];
+ 		$text_padding_right= $settings['grp_padding_right'];
 		#comman
 		$auto_image_write_text = 'yes';
 		$auto_image_width = 1130;
@@ -132,30 +150,35 @@ class vaGenerateImage
 		
 		#for text 
 		$auto_image_bg_color = '#b5b5b5';
-		$auto_image_text_color = '#fff76d';
-		$auto_image_border_color = '#000000';
-		$auto_image_shadow_color = '#000000';
+		$auto_image_text_color = !empty($image_text_color) ? $image_text_color : '#fff76d';
+		$auto_image_border_color = !empty($image_text_shadow_color) ? $image_text_shadow_color : '#000000';
+		$auto_image_shadow_color = !empty($image_text_shadow_color) ? $image_text_shadow_color : '#000000';
+
+		$auto_copyright_text_color = !empty($image_copyright_color) ? $image_copyright_color : '#d6d1d1';
 
 		#image generating 
-		$auto_image_top_padding = 10;
-		$auto_image_bottom_padding = 10;
-		$auto_image_left_padding = 10;
-		$auto_image_right_padding = 10;
+		$auto_image_top_padding = !empty( $text_padding_top ) ? $text_padding_top : 10;
+		$auto_image_bottom_padding = !empty( $text_padding_bottom ) ? $text_padding_bottom : 10;
+		$auto_image_left_padding = !empty( $text_padding_left ) ? $text_padding_left : 10;
+		$auto_image_right_padding = !empty( $text_padding_right ) ? $text_padding_right : 10;
 
 		#$post data
 		$post = get_post( $post_id );
-		$content = $post->post_content;
+		$content = $post->post_title;
+		if( empty( $content ) ){
+			$content = $post->post_content;
+		}
 		#get this data from the post
 	    $auto_image_before_text  = '';
 	    $auto_image_post_text  = $content;//'Alauddin Ansari';//post title
 	    $auto_image_after_text = '';
 
 	    #text settings
-	    $auto_image_fontsize = 30;
+	    $auto_image_fontsize = !empty($image_text_size) ? $image_text_size : 30;
 	    $font = GRP_FONT_DIR.'FreeSansBold.ttf';
-	    $auto_image_text_transform = 'none';//'uppercase'; //lowecase // capitalize
-	    $auto_image_text_x_position = 'center';// right // left
-	    $auto_image_text_y_position = 'center';//top//bottom
+	    $auto_image_text_transform = !empty($text_transform) ? $text_transform : 'none';//'uppercase'; //lowecase // capitalize
+	    $auto_image_text_x_position = !empty($text_x_position) ? $text_x_position : 'center';// right // left
+	    $auto_image_text_y_position = !empty($text_y_position) ? $text_y_position : 'center';//top//bottom
 
 	    $auto_image_shadow = 'yes';
 		$auto_image_border = 'no';
@@ -164,7 +187,7 @@ class vaGenerateImage
 	    $text = self::va_hex2rgbcolors($auto_image_text_color);
 	    $border = self::va_hex2rgbcolors($auto_image_border_color);
 	    $shadow = self::va_hex2rgbcolors($auto_image_shadow_color);
-	    $copyright_shadow = self::va_hex2rgbcolors('#d6d1d1');
+	    $copyright_shadow = self::va_hex2rgbcolors($image_copyright_color);
 
 	    $text_color = imagecolorallocatealpha( $new_featured_img, $text["red"], $text["green"], $text["blue"], 0);
         $border_color = imagecolorallocatealpha( $new_featured_img, $border["red"], $border["green"], $border["blue"], 0);
@@ -406,7 +429,8 @@ class vaGenerateImage
 
 	        $white = imagecolorallocate($new_featured_img, 255, 255, 255);
 			$txt = $copyright_text;
-	        imagettftext($new_featured_img, 10, 0, 5, $auto_image_text_y[$y_last_key]+$copy_right_offset, $copyright_color, $font, $txt);
+			$cpy_txt_size = !empty($image_copyrighttext_size) ? $image_copyrighttext_size : 10;
+	        imagettftext($new_featured_img, $cpy_txt_size, 0, 5, $auto_image_text_y[$y_last_key]+$copy_right_offset, $copyright_color, $font, $txt);
        }
        	
 
@@ -426,8 +450,11 @@ class vaGenerateImage
 		#post_data
 		##$post data
 		$post = get_post( $post_id );
-		$content = $post->post_content;
-		$auto_image_post_text = $content; //"Alauddin Ansari";
+		$content = $post->post_title;
+		if( empty( $content ) ){
+			$content = $post->post_content;
+		}
+		$auto_image_post_title = $auto_image_post_text = $content; //"Alauddin Ansari";
 
 		if($auto_image_post_title == ''){
         	$auto_image_post_title = 'image';

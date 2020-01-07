@@ -12,7 +12,7 @@ class GrpPluginSettingTab
 
 	public function grp_settings_page_init(){
 		// add custom menu page
-		$settings_page = add_menu_page(  'GRP Theme Settings', 'GRP Theme Settings', 'edit_theme_options', 'grp-settings', array($this,'grp_settings_page') );
+		$settings_page = add_menu_page(  'GRP Settings', 'GRP Settings', 'edit_theme_options', 'grp-settings', array($this,'grp_settings_page') );
 		//add this action to save your setting page data
 		add_action( "load-{$settings_page}", array( $this, 'grp_load_settings_page' ) );
 	}
@@ -30,6 +30,8 @@ class GrpPluginSettingTab
 	public function grp_save_plugin_settings() {
 		global $pagenow;
 		$settings = get_option( "grp_plugin_settings" );
+
+
 		
 		#for cron reset parameters if they change old data
 		if(isset( $_POST['grp_tag'] ) && ( $settings['grp_tag'] == $_POST['grp_tag'] ) ){
@@ -68,6 +70,31 @@ class GrpPluginSettingTab
 		        case 'image' :
 		        	$settings['grp_pixabay_api']  = $_POST['grp_pixabay_api'];
 		        	$settings['grp_copyright_text']  = $_POST['grp_copyright_text'];
+		        	$settings['grp_pixabay_q_tag']  = $_POST['grp_pixabay_q_tag'];
+		        	
+		        	$settings['grp_pixabay_cat']  = $_POST['grp_pixabay_cat'];
+
+				break;
+				case 'text' :
+					$settings['grp_text_color'] = $_POST['grp_text_color'];
+					$settings['grp_text_shadow_color'] = $_POST['grp_text_shadow_color'];
+					$settings['grp_copy_right_text_color'] = $_POST['grp_copy_right_text_color'];
+					$settings['grp_text_size'] = $_POST['grp_text_size'];
+					$settings['grp_copyright_text_size'] = $_POST['grp_copyright_text_size'];
+					
+					$settings['grp_copy_right_text_color'] = $_POST['grp_copy_right_text_color'];
+					$settings['grp_copy_right_text_color'] = $_POST['grp_copy_right_text_color'];
+
+					$settings['grp_x_position'] = $_POST['grp_x_position'];
+					$settings['grp_y_position'] = $_POST['grp_y_position'];
+					$settings['grp_text_transform'] = $_POST['grp_text_transform'];
+
+					$settings['grp_padding_top'] = $_POST['grp_padding_top'];
+					$settings['grp_padding_bottom'] = $_POST['grp_padding_bottom'];
+					$settings['grp_padding_left'] = $_POST['grp_padding_left'];
+					$settings['grp_padding_right'] = $_POST['grp_padding_right'];					
+
+					
 				break;
 				case 'homepage' : 
 					$settings['ilc_intro']	  = $_POST['ilc_intro'];
@@ -81,7 +108,7 @@ class GrpPluginSettingTab
 	}
 
 	public function grp_admin_tabs( $current = 'homepage' ) { 
-	    $tabs = array( 'general' => 'General', 'image' => 'Image' ); 
+	    $tabs = array( 'general' => 'General', 'image' => 'Image' ,'text' => 'Text' ); 
 	    $links = array();
 	    echo '<div id="icon-themes" class="icon32"><br></div>';
 	    echo '<h2 class="nav-tab-wrapper">';
@@ -94,8 +121,10 @@ class GrpPluginSettingTab
 	}
 
 	public function grp_settings_page(){
+		wp_enqueue_script('grp_admin_js');
 		global $pagenow;
 		$settings = get_option( "grp_plugin_settings" );
+		
 		?>
 		
 		<div class="wrap">
@@ -124,6 +153,9 @@ class GrpPluginSettingTab
 							break; 
 							case 'image' : 
 								include 'tabs/image.php';
+							break;
+							case 'text' : 
+								include 'tabs/text.php';
 							break;
 							
 							break;
