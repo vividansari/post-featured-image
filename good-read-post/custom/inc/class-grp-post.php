@@ -12,7 +12,11 @@ class grpPost
 	public function grp_get_data($tag, $page=''){
 
 		$page = empty($page) ? 1 : $page;
-		$html = file_get_contents('https://www.goodreads.com/quotes/tag/'.$tag.'?page='.$page);
+
+		$url = "https://www.goodreads.com/quotes/search?commit=Search&page=$page&q=$tag&utf8=%E2%9C%93";
+		$new_url = 'https://www.goodreads.com/quotes/tag/'.$tag.'?page='.$page;
+		
+		$html = file_get_contents($url);
 
 		$dom = new DOMDocument;
 		@$dom->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
