@@ -9,7 +9,7 @@ class vaGenerateImage
 			
 	}
 
-	public function get_image_from_pixbay($post_id = ''){
+	public function get_image_from_pixbay( $post_id = '' ){
 		
 		$settings = get_option( "grp_plugin_settings" );
 		$pixbay_api_key = $settings['grp_pixabay_api'];
@@ -27,48 +27,49 @@ class vaGenerateImage
 		    $search = 'https://pixabay.com/api/?key='.$pixbay_api_key.'&q='.$query.'&image_type=photo&per_page=100&order=popular'.$cat;
 
 		    $result = wp_remote_request($search);
-		    $data = json_decode($result['body'], true);
-		    if($data['totalHits'] > 0){
-		        if($data['totalHits'] > 100){
-		            $n = rand(0,99);
-		            }
-		        else{
-		            $n = rand(0,($data['totalHits']-1));
-		            }
-				$backgroundimage1 = $data['hits'][$n]['largeImageURL'];
-				$backgroundimage2 = wp_remote_request($backgroundimage1);
+		    if( !is_wp_error( $result ) && ($result['response']['code'] == 200 || $result['response']['code'] == 201) ){
 
-
-		        /* Create a temp file to use as bg */
-		        $temp_file = GRP_IMAGE_DIR . 'temp.jpg';
-
-		        $file_upload = file_put_contents( $temp_file, $backgroundimage2['body'] );
-		       if( $file_upload ) {
-					$backgroundimg = $temp_file;
-		            $done = true;
-		        }
+		    	$data = json_decode($result['body'], true);
+			    if($data['totalHits'] > 0){
+			        if($data['totalHits'] > 100){
+			            $n = rand(0,99);
+			            }
+			        else{
+			            $n = rand(0,($data['totalHits']-1));
+			            }
+					$backgroundimage1 = $data['hits'][$n]['largeImageURL'];
+					$backgroundimage2 = wp_remote_request($backgroundimage1);
+			        if( !is_wp_error( $backgroundimage2 ) && ($result['response']['code'] == 200 || $result['response']['code'] == 201) ){
+				        /* Create a temp file to use as bg */
+				        $temp_file = GRP_IMAGE_DIR . 'temp.jpg';
+				        $file_upload = file_put_contents( $temp_file, $backgroundimage2['body'] );
+				       if( $file_upload ) {
+							$backgroundimg = $temp_file;
+				            $done = true;
+				        }
+				    }
+			    }	
 		    }
+		    
 	    }
 	    
 	    if( !empty( $backgroundimg ) ){
+	    	grp_post::grp_log('image find='.$post_id);
 	    	$this->generate_image($backgroundimg, $post_id );
 	    }else{
+	    	grp_post::grp_log('image not find='.$post_id);
 	    	$temp_file = GRP_IMAGE_DIR . 'temp.jpg';
 	    	$this->generate_image($temp_file, $post_id );
 	    }
 	}
 
 	public static function generate_image( $backgroundimg , $post_id = '' ){
+		grp_post::grp_log('generate_image');
 		$settings = get_option( "grp_plugin_settings" );
-		
-		
 		$va_image_resize = 'crop';
 	    $auto_image_width = 1130;
 	    $auto_image_height = 580;
 	    $auto_image_write_text = 'yes';
-	    
-	    
-
 
 		$ext = strtolower(pathinfo($backgroundimg, PATHINFO_EXTENSION));
 		if($ext == 'png'){
@@ -127,22 +128,24 @@ class vaGenerateImage
 	}
 
 	public static function put_text_on_image($new_featured_img , $post_id = ''){
+		
 		$settings = get_option( "grp_plugin_settings" );
-		$copyright_text = $settings['grp_copyright_text'];
-		$image_text_color = $settings['grp_text_color'];
-		$image_text_shadow_color = $settings['grp_text_shadow_color'];
-		$image_text_size = $settings['grp_text_size'];
-		$image_copyrighttext_size = $settings['grp_copyright_text_size'];
-		$image_copyright_color = $settings['grp_copy_right_text_color'];
+		$copyright_text = isset($settings['grp_copyright_text']) ? $settings['grp_copyright_text'] : '';
+		$image_text_color = isset($settings['grp_text_color']) ? $settings['grp_text_color'] : '';
+		$image_text_shadow_color = isset($settings['grp_text_shadow_color']) ? $settings['grp_text_shadow_color'] : '';
+		$image_text_size = isset($settings['grp_text_size']) ? $settings['grp_text_size'] : '';
+		$image_copyrighttext_size = isset($settings['grp_copyright_text_size']) ? $settings['grp_copyright_text_size'] : '';
+		$image_copyright_color = isset($settings['grp_copy_right_text_color']) ? $settings['grp_copy_right_text_color'] : '';
+		$text_transform = isset($settings['grp_text_transform']) ? $settings['grp_text_transform'] : '';
+		$text_x_position = isset($settings['grp_x_position']) ? $settings['grp_x_position'] : '';
+		$text_y_position = isset($settings['grp_y_position']) ? $settings['grp_y_position'] : '';
+ 		$text_padding_top= isset($settings['grp_padding_top']) ? $settings['grp_padding_top'] : '';
+ 		$text_padding_bottom= isset($settings['grp_padding_bottom']) ? $settings['grp_padding_bottom'] : '';
+ 		$text_padding_left= isset($settings['grp_padding_left']) ? $settings['grp_padding_left'] : '';
+ 		$text_padding_right= isset($settings['grp_padding_right']) ? $settings['grp_padding_right'] : '';
 
-		$text_transform = $settings['grp_text_transform'];
-		$text_x_position = $settings['grp_x_position'];
-		$text_y_position = $settings['grp_y_position'];
-
- 		$text_padding_top= $settings['grp_padding_top'];
- 		$text_padding_bottom= $settings['grp_padding_bottom'];
- 		$text_padding_left= $settings['grp_padding_left'];
- 		$text_padding_right= $settings['grp_padding_right'];
+ 		$auto_image_remove_linebreaks = 'no';
+ 		
 		#comman
 		$auto_image_write_text = 'yes';
 		$auto_image_width = 1130;
@@ -172,7 +175,7 @@ class vaGenerateImage
 	    $auto_image_before_text  = '';
 	    $auto_image_post_text  = $content;//'Alauddin Ansari';//post title
 	    $auto_image_after_text = '';
-
+		
 	    #text settings
 	    $auto_image_fontsize = !empty($image_text_size) ? $image_text_size : 30;
 	    $font = GRP_FONT_DIR.'FreeSansBold.ttf';
@@ -188,13 +191,14 @@ class vaGenerateImage
 	    $border = self::va_hex2rgbcolors($auto_image_border_color);
 	    $shadow = self::va_hex2rgbcolors($auto_image_shadow_color);
 	    $copyright_shadow = self::va_hex2rgbcolors($image_copyright_color);
+	    
 
-	    $text_color = imagecolorallocatealpha( $new_featured_img, $text["red"], $text["green"], $text["blue"], 0);
-        $border_color = imagecolorallocatealpha( $new_featured_img, $border["red"], $border["green"], $border["blue"], 0);
-        $shadow_color = imagecolorallocatealpha( $new_featured_img, $shadow["red"], $shadow["green"], $shadow["blue"], 0);
+	    $text_color = imagecolorallocatealpha( $new_featured_img, (int)$text["red"], (int)$text["green"], (int)$text["blue"], 0);
+        $border_color = imagecolorallocatealpha( $new_featured_img, (int)$border["red"], (int)$border["green"], (int)$border["blue"], 0);
+        $shadow_color = imagecolorallocatealpha( $new_featured_img, (int)$shadow["red"], (int)$shadow["green"], (int)$shadow["blue"], 0);
 
         #new copyright 
-        $copyright_color = imagecolorallocatealpha( $new_featured_img, $copyright_shadow["red"], $copyright_shadow["green"], $copyright_shadow["blue"], 0);
+        $copyright_color = imagecolorallocatealpha( $new_featured_img, (int)$copyright_shadow["red"], (int)$copyright_shadow["green"], (int)$copyright_shadow["blue"], 0);
            
         $auto_image_text_to_write = $auto_image_before_text . $auto_image_post_text . $auto_image_after_text;
 
@@ -432,20 +436,20 @@ class vaGenerateImage
 			$cpy_txt_size = !empty($image_copyrighttext_size) ? $image_copyrighttext_size : 10;
 	        imagettftext($new_featured_img, $cpy_txt_size, 0, 5, $auto_image_text_y[$y_last_key]+$copy_right_offset, $copyright_color, $font, $txt);
        }
-       	
-
-        self::add_image_in_wp( $new_featured_img,$post_id,$text_color,$border_color,$shadow_color );
+       
+       self::add_image_in_wp( $new_featured_img,$post_id,$text_color,$border_color,$shadow_color );
 
 	}
 
-	public function add_image_in_wp( $new_featured_img , $post_id = '' , $text_color, $border_color, $shadow_color){
-		$settings = get_option( "grp_plugin_settings" );
+	public static function add_image_in_wp( $new_featured_img , $post_id = '' , $text_color, $border_color, $shadow_color){
 
+		$settings = get_option( "grp_plugin_settings" );
 		$auto_image_filetype = 'jpg';
 		$auto_image_quality = 95;
 		$auto_image_write_text = 'yes';
 
 		$auto_image_set_as_featured = "yes";
+		$auto_image_insert_into_post = "no";
 
 		#post_data
 		##$post data
@@ -454,7 +458,9 @@ class vaGenerateImage
 		if( empty( $content ) ){
 			$content = $post->post_content;
 		}
-		$auto_image_post_title = $auto_image_post_text = $content; //"Alauddin Ansari";
+
+		$auto_image_post_title = $content;
+		$auto_image_post_text = $content; //"Alauddin Ansari";
 
 		if($auto_image_post_title == ''){
         	$auto_image_post_title = 'image';
@@ -462,19 +468,20 @@ class vaGenerateImage
 
 	    // Save the image
 	    $attachment_array = array(
-	        'title'          => $auto_image_post_text,
+	        'title'          => preg_replace( '/\.[^.]+$/', '', basename( $auto_image_post_text ) ),
 	        'alt'            => $auto_image_post_text,
 	        'caption'        => $auto_image_post_text,
 	        'description'    => $auto_image_post_text,
 	        'filename'       => $auto_image_post_title,
 	        'filename_spaces' => '-'
 	        );
-	    $attachment_array = apply_filters('afift_pro_before_save_image', $attachment_array, $post_id);
+	  /*  $attachment_array = apply_filters('afift_pro_before_save_image', $attachment_array, $post_id);*/
 	    $regex = array('/[^\p{L}\-\.\p{N}\s]/u', '/\s/');
 	    $repl  = array('', $attachment_array['filename_spaces']);
-	    $post_slug = strtolower(preg_replace($regex, $repl, $attachment_array['filename']));
+	    $image_slug = sanitize_title( $attachment_array['filename'] );
+	    $post_slug = strtolower(preg_replace($regex, $repl, $image_slug));
 	    $post_slug = preg_replace('#[ -]+#', $attachment_array['filename_spaces'], $post_slug);
-	    $post_slug = substr($post_slug, 0, 195);
+	    $post_slug = substr($post_slug, 0, 100);
 	 
 	    $upload_dir = wp_upload_dir();
 	    $slug_n = '';
@@ -518,33 +525,55 @@ class vaGenerateImage
 		else {
 			$post_excerpt = $attachment_array['caption'];
 			}
-	  
+	  	grp_post::grp_log("newimg_url===".$newimg_url);
+	  	grp_post::grp_log("newimg===".$newimg);
+	  	global $wpdb;
 	    $attachment = array(
 	        'guid'           => $newimg_url, 
 	        'post_mime_type' => 'image/' . $mime_type,
 	        'post_title'     => $attachment_array['title'],
 		    'post_excerpt'   => $post_excerpt,
-	        'post_content'   => $attachment_array['description'],
+	        'post_content'   => '',
 	        'post_status'    => 'inherit'
-	        );
-	    $attach_id = wp_insert_attachment( $attachment, $newimg, $post_id );
+	    );
+	    $attach_id = wp_insert_attachment( $attachment, $newimg, $post_id , true );
+	    grp_post::grp_log('---AFTER_ATTACHMENT---');
+	    grp_post::grp_log('---LAST_QUERY---');
+		grp_post::grp_log($wpdb->last_query);
+
+// Print last SQL query string
+
+	    grp_post::grp_log( print_r( $attach_id, true ) );
+	    if(is_wp_error( $attach_id ) ){
+	    	grp_post::grp_log('__ATTACHMEN_ERROR__');
+	    	grp_post::grp_log( print_r( $attach_id, true ) );
+	    }
 	    require_once( ABSPATH . 'wp-admin/includes/image.php' );
 	    $attach_data = wp_generate_attachment_metadata( $attach_id, $newimg );
 	    wp_update_attachment_metadata( $attach_id, $attach_data );
 	    update_post_meta( $attach_id, '_wp_attachment_image_alt', wp_slash($attachment_array['alt']) );
 	   
 	    // Set the image as the featured image
-	    if($auto_image_set_as_featured == 'yes'){
-	       set_post_thumbnail( $post_id, $attach_id );
+	    //if($auto_image_set_as_featured == 'yes'){
+	      
+	    //}
+	   	
+	    if(!is_wp_error( $attach_id ) ){
+	    	grp_post::grp_log('add_attachment post_id ='.$post_id .'attachment_id='.$attach_id);
+	    	set_post_thumbnail( $post_id, $attach_id );	
+	    }else{
+	    	grp_post::grp_log('delete_post ='.$post_id);
+	    	//wp_delete_post( $post_id );
 	    }
-
+	     
+	    
 	    // Insert the image into the post
 	    if($auto_image_insert_into_post == 'yes'){
 	        update_post_meta( $post_id, 'add_before_post', $newimg_url );
 	    }
 	}
 
-	public function va_hex2rgbcolors( $c ){
+	public static function va_hex2rgbcolors( $c ){
 		$c = str_replace("#", "", $c);
 	    if(strlen($c) == 3){
 	        $r = hexdec( $c[0] . $c[1] );
@@ -561,7 +590,7 @@ class vaGenerateImage
 	        $g = 'ff';
 	        $b = '00';
 	        }
-	    return Array("red" => $r, "green" => $g, "blue" => $b);
+	    return array("red" => $r, "green" => $g, "blue" => $b);
 	}
 }
 $vagi = new vaGenerateImage();

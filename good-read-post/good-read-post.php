@@ -114,12 +114,24 @@ final class grp_post {
  *
  * @return void
  */
-function grp_post_main() {
+// function grp_post_main() {
 	new grp_post();
-}
+// }
 
 /**
  * Initialise the plugin
  */
-add_action( 'plugins_loaded', 'grp_post_main' );
+// add_action( 'plugins_loaded', 'grp_post_main' );
+
+register_activation_hook( __FILE__, 'grp_activation' );
+function grp_activation(){
+	if ( !wp_next_scheduled( 'grp_get_data_cron' ) ) {
+		wp_schedule_event( current_time( 'timestamp' ), 'every_five_minutes', 'grp_get_data_cron');
+	}
+}
+
+register_deactivation_hook( __FILE__, 'grp_deactivation' );
+function grp_deactivation() {
+    wp_clear_scheduled_hook( 'grp_get_data_cron' );
+}
 ?>

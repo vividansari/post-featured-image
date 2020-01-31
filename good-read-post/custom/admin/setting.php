@@ -108,7 +108,7 @@ class GrpPluginSettingTab
 	}
 
 	public function grp_admin_tabs( $current = 'homepage' ) { 
-	    $tabs = array( 'general' => 'General', 'image' => 'Image' ,'text' => 'Text' ); 
+	    $tabs = array( 'general' => 'General', 'image' => 'Image' ,'text' => 'Text' , 'cron_details' => 'Cron Details' ); 
 	    $links = array();
 	    echo '<div id="icon-themes" class="icon32"><br></div>';
 	    echo '<h2 class="nav-tab-wrapper">';
@@ -157,8 +157,11 @@ class GrpPluginSettingTab
 							case 'text' : 
 								include 'tabs/text.php';
 							break;
-							
+
+							case 'cron_details': 
+								include 'tabs/cron_details.php';
 							break;
+							
 						}
 						echo '</table>';
 					}
