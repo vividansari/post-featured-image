@@ -51,14 +51,16 @@ class grpPost
 				$author_name = trim($quote_arr[1]);
 				$author_arr = explode(',', $author_name);
 				$author_book = '';
+				$tag_data = array();
+				$tag_data['tag'] = $tag;	
 				if(isset($author_arr[0])){
 					$author_name = $author_arr[0];	
+					$tag_data['author'] = $author_name;	
+				}else{
+					$author_name = '';
 				}
 				
-				$tag_data = array(
-					'tag' => $tag,
-					'author' => $author_name,
-				);
+				
 				//grp_post::grp_log('-----Get data through current page-----');
 				//grp_post::grp_log(print_r($tag_data,true));
 				if(isset($author_arr[1])){
@@ -243,7 +245,8 @@ class grpPost
 
 			$post_tag_str = '';
 			if( isset( $tag_data['tag'] ) ){
-				$post_tag_str .= $tag_data['tag'].' quotes, ';
+				$_tag = str_replace('quotes', '', $tag_data['tag']);
+				$post_tag_str .= $_tag.' quotes, ';
 			}
 			if( isset( $tag_data['author'] ) ){
 				$post_tag_str .= $tag_data['author'].', ';
@@ -252,14 +255,23 @@ class grpPost
 				$post_tag_str .= $tag_data['book_title'].', ';
 			}
 			if( isset( $tag_data['book_title'] ) ){
-				$post_tag_str .= $tag_data['book_title'].' quotes, ';
+				$_book_title_tag = str_replace('quotes', '', $tag_data['book_title']);
+				$post_tag_str .= $_book_title_tag.' quotes, ';
 			}
 			if( isset( $tag_data['author'] ) ){
-				$post_tag_str .= $tag_data['author'].' quotes, ';
+				$_author_tag = str_replace('author', '', $tag_data['author']);
+				$post_tag_str .= $_author_tag.' quotes, ';
 			}
 			if( isset( $tag_data['author'] ) ){
-				$post_tag_str .= $tag_data['author'].' '.$tag_data['tag'].' quotes, ';
+				
+				$_author_tag = str_replace('quotes', '', $tag_data['author']);
+				$_tag = str_replace( $_author_tag, '', $tag_data['tag']);
+				$_tag = str_replace('quotes', '', $_tag);
+				$post_tag_str .= $_author_tag.' '.$_tag.' quotes, ';
 			}
+			$tag_arr = explode(',', $post_tag_str);
+			$tag_arr = array_unique($tag_arr);
+			$post_tag_str = implode(',', $tag_arr);
 			wp_set_post_tags($post_id,$post_tag_str);
 
 		}
