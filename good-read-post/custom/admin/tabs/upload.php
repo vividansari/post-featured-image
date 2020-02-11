@@ -1,9 +1,17 @@
-<?php
-?>
 <div class="grp_upload_tags">
-	<input type="file" name="tag_csv" class="tag_csv">
-	<button type="button" name="tag_csv_button" class="tag_csv_btn">Upload csv</button>
+	<tr>
+		<th>Upload tag csv file</th>
+		<td>
+			<input type="file" name="tag_csv" class="tag_csv">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<button type="button" name="tag_csv_button" class="button-primary tag_csv_btn">Upload Tag csv</button>
+		</td>
+	</tr>
 </div>
+
 <script type="text/javascript" charset="utf-8" >
 	jQuery(document).ready(function($){
 		jQuery('.tag_csv_btn').click(function(){
@@ -17,7 +25,7 @@
 			var ajax_url = '<?php echo admin_url("admin-ajax.php"); ?>';
 			// var file = jQuery('.tag_csv').val();
 			// console.log(file);
-			console.log(ajax_url);
+			// console.log(ajax_url);
 			jQuery.ajax({
 				url: ajax_url,
 				type: 'POST',

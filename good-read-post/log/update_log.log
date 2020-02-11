@@ -1,82 +1,5 @@
-[10-Feb-2020 11:43:55]fedfefrer
-[10-Feb-2020 11:43:55]Array
-(
-    [0] => Array
-        (
-            [0] => love
-            [1] => life
-            [2] => inspirational
-            [3] => humor
-            [4] => philosophy
-            [5] => god
-            [6] => inspirational quotes
-            [7] => truth
-            [8] => wisdom
-            [9] => romance
-            [10] => poetry
-            [11] => death
-            [12] => hapiness
-            [13] => hope
-            [14] => faith
-            [15] => writing
-            [16] => inspiration
-            [17] => quotes
-            [18] => religion
-            [19] => life lessons
-            [20] => success
-            [21] => relationships
-            [22] => motivational
-            [23] => time
-            [24] => knowledge
-            [25] => love quotes
-            [26] => spirituality
-            [27] => science
-            [28] => books
-            [29] => education
-        )
-
-)
-
-[10-Feb-2020 11:49:25]Array
-(
-    [0] => Array
-        (
-            [0] => love
-            [1] => life
-            [2] => inspirational
-            [3] => humor
-            [4] => philosophy
-            [5] => god
-            [6] => inspirational quotes
-            [7] => truth
-            [8] => wisdom
-            [9] => romance
-            [10] => poetry
-            [11] => death
-            [12] => hapiness
-            [13] => hope
-            [14] => faith
-            [15] => writing
-            [16] => inspiration
-            [17] => quotes
-            [18] => religion
-            [19] => life lessons
-            [20] => success
-            [21] => relationships
-            [22] => motivational
-            [23] => time
-            [24] => knowledge
-            [25] => love quotes
-            [26] => spirituality
-            [27] => science
-            [28] => books
-            [29] => education
-        )
-
-)
-
-[10-Feb-2020 11:56:00]
-[10-Feb-2020 11:59:58]Array
+[11-Feb-2020 04:53:30]
+[11-Feb-2020 04:53:30]Array
 (
     [0] => love
     [1] => life
@@ -110,354 +33,118 @@
     [29] => education
 )
 
-[10-Feb-2020 12:00:35]POST_TYPE==post
-[10-Feb-2020 12:00:35]post_status==publish
-[10-Feb-2020 12:00:35]called_image_function  post_id==9113
-[10-Feb-2020 12:00:39]image find=9113
-[10-Feb-2020 12:00:39]generate_image
-[10-Feb-2020 12:00:39]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/its-the-kind-of-kiss-that-inspires-stars-to-climb-into-the-sky-and-light-up-the-world-e28095-tahereh.jpg
-[10-Feb-2020 12:00:39]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/its-the-kind-of-kiss-that-inspires-stars-to-climb-into-the-sky-and-light-up-the-world-e28095-tahereh.jpg
-[10-Feb-2020 12:00:39]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:00:39]---LAST_QUERY---
-[10-Feb-2020 12:00:39]SELECT * FROM wp_posts WHERE ID = 9114 LIMIT 1
-[10-Feb-2020 12:00:39]9114
-[10-Feb-2020 12:00:39]add_attachment post_id =9113attachment_id=9114
-[10-Feb-2020 12:00:39]POST_TYPE==post
-[10-Feb-2020 12:00:40]POST_TYPE==post
-[10-Feb-2020 12:00:40]post_status==publish
-[10-Feb-2020 12:00:40]called_image_function  post_id==9115
-[10-Feb-2020 12:00:44]image find=9115
-[10-Feb-2020 12:00:44]generate_image
-[10-Feb-2020 12:00:44]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/true-love-is-the-best-thing-in-the-world-except-for-cough-drops-e28095-william-goldman-the-princess-.jpg
-[10-Feb-2020 12:00:44]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/true-love-is-the-best-thing-in-the-world-except-for-cough-drops-e28095-william-goldman-the-princess-.jpg
-[10-Feb-2020 12:00:44]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:00:44]---LAST_QUERY---
-[10-Feb-2020 12:00:44]SELECT * FROM wp_posts WHERE ID = 9116 LIMIT 1
-[10-Feb-2020 12:00:44]9116
-[10-Feb-2020 12:00:45]add_attachment post_id =9115attachment_id=9116
-[10-Feb-2020 12:00:45]POST_TYPE==post
-[10-Feb-2020 12:00:45]POST_TYPE==post
-[10-Feb-2020 12:00:45]post_status==publish
-[10-Feb-2020 12:00:45]called_image_function  post_id==9117
-[10-Feb-2020 12:00:49]image find=9117
-[10-Feb-2020 12:00:49]generate_image
-[10-Feb-2020 12:00:49]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/you-are-my-heart-my-life-my-entire-existence-ash-e28095-julie-kagawa-the-iron-queen.jpg
-[10-Feb-2020 12:00:49]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/you-are-my-heart-my-life-my-entire-existence-ash-e28095-julie-kagawa-the-iron-queen.jpg
-[10-Feb-2020 12:00:49]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:00:49]---LAST_QUERY---
-[10-Feb-2020 12:00:49]SELECT * FROM wp_posts WHERE ID = 9118 LIMIT 1
-[10-Feb-2020 12:00:49]9118
-[10-Feb-2020 12:00:50]add_attachment post_id =9117attachment_id=9118
-[10-Feb-2020 12:00:50]POST_TYPE==post
-[10-Feb-2020 12:00:50]POST_TYPE==post
-[10-Feb-2020 12:00:50]post_status==publish
-[10-Feb-2020 12:00:50]called_image_function  post_id==9119
-[10-Feb-2020 12:00:53]image find=9119
-[10-Feb-2020 12:00:53]generate_image
-[10-Feb-2020 12:00:53]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/youre-just-another-story-i-cant-tell-anymore-e28095-pleasefindthis-i-wrote-this-for-you.jpg
-[10-Feb-2020 12:00:53]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/youre-just-another-story-i-cant-tell-anymore-e28095-pleasefindthis-i-wrote-this-for-you.jpg
-[10-Feb-2020 12:00:53]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:00:53]---LAST_QUERY---
-[10-Feb-2020 12:00:53]SELECT * FROM wp_posts WHERE ID = 9120 LIMIT 1
-[10-Feb-2020 12:00:53]9120
-[10-Feb-2020 12:00:54]add_attachment post_id =9119attachment_id=9120
-[10-Feb-2020 12:00:54]POST_TYPE==post
-[10-Feb-2020 12:00:54]POST_TYPE==post
-[10-Feb-2020 12:00:54]post_status==publish
-[10-Feb-2020 12:00:54]called_image_function  post_id==9121
-[10-Feb-2020 12:00:58]image find=9121
-[10-Feb-2020 12:00:58]generate_image
-[10-Feb-2020 12:00:58]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/actually-thats-my-secret-i-cant-even-talk-about-you-to-anybody-because-i-dont-want-any-more-people-t.jpg
-[10-Feb-2020 12:00:58]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/actually-thats-my-secret-i-cant-even-talk-about-you-to-anybody-because-i-dont-want-any-more-people-t.jpg
-[10-Feb-2020 12:00:58]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:00:58]---LAST_QUERY---
-[10-Feb-2020 12:00:58]SELECT * FROM wp_posts WHERE ID = 9122 LIMIT 1
-[10-Feb-2020 12:00:58]9122
-[10-Feb-2020 12:00:58]add_attachment post_id =9121attachment_id=9122
-[10-Feb-2020 12:00:58]POST_TYPE==post
-[10-Feb-2020 12:00:59]POST_TYPE==post
-[10-Feb-2020 12:00:59]post_status==publish
-[10-Feb-2020 12:00:59]called_image_function  post_id==9123
-[10-Feb-2020 12:01:02]image find=9123
-[10-Feb-2020 12:01:02]generate_image
-[10-Feb-2020 12:01:02]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/only-love-of-a-good-woman-will-make-a-man-question-every-choice-every-action-only-love-makes-a-warri.jpg
-[10-Feb-2020 12:01:02]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/only-love-of-a-good-woman-will-make-a-man-question-every-choice-every-action-only-love-makes-a-warri.jpg
-[10-Feb-2020 12:01:02]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:01:02]---LAST_QUERY---
-[10-Feb-2020 12:01:02]SELECT * FROM wp_posts WHERE ID = 9124 LIMIT 1
-[10-Feb-2020 12:01:02]9124
-[10-Feb-2020 12:01:03]add_attachment post_id =9123attachment_id=9124
-[10-Feb-2020 12:01:03]POST_TYPE==post
-[10-Feb-2020 12:01:03]POST_TYPE==post
-[10-Feb-2020 12:01:03]post_status==publish
-[10-Feb-2020 12:01:03]called_image_function  post_id==9125
-[10-Feb-2020 12:01:07]image find=9125
-[10-Feb-2020 12:01:07]generate_image
-[10-Feb-2020 12:01:07]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/my-soul-sees-its-equal-in-you-e28095-renee-ahdieh-the-wrath-and-the-dawn.jpg
-[10-Feb-2020 12:01:07]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/my-soul-sees-its-equal-in-you-e28095-renee-ahdieh-the-wrath-and-the-dawn.jpg
-[10-Feb-2020 12:01:07]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:01:07]---LAST_QUERY---
-[10-Feb-2020 12:01:07]SELECT * FROM wp_posts WHERE ID = 9126 LIMIT 1
-[10-Feb-2020 12:01:07]9126
-[10-Feb-2020 12:01:08]add_attachment post_id =9125attachment_id=9126
-[10-Feb-2020 12:01:08]POST_TYPE==post
-[10-Feb-2020 12:01:08]POST_TYPE==post
-[10-Feb-2020 12:01:08]post_status==publish
-[10-Feb-2020 12:01:08]called_image_function  post_id==9127
-[10-Feb-2020 12:01:13]image find=9127
-[10-Feb-2020 12:01:13]generate_image
-[10-Feb-2020 12:01:13]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/i-love-you-he-whispered-and-kissed-my-brow-thorns-and-all-e28095-sarah-j-maas-a-court-of-thorns-and-.jpg
-[10-Feb-2020 12:01:13]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/i-love-you-he-whispered-and-kissed-my-brow-thorns-and-all-e28095-sarah-j-maas-a-court-of-thorns-and-.jpg
-[10-Feb-2020 12:01:13]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:01:13]---LAST_QUERY---
-[10-Feb-2020 12:01:13]SELECT * FROM wp_posts WHERE ID = 9128 LIMIT 1
-[10-Feb-2020 12:01:13]9128
-[10-Feb-2020 12:01:13]add_attachment post_id =9127attachment_id=9128
-[10-Feb-2020 12:01:13]POST_TYPE==post
-[10-Feb-2020 12:01:14]POST_TYPE==post
-[10-Feb-2020 12:01:14]post_status==publish
-[10-Feb-2020 12:01:14]called_image_function  post_id==9129
-[10-Feb-2020 12:01:18]image find=9129
-[10-Feb-2020 12:01:18]generate_image
-[10-Feb-2020 12:01:19]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/i-ask-the-impossible-love-me-forever-love-me-when-all-desire-is-gone-love-me-with-the-single-mindedn.jpg
-[10-Feb-2020 12:01:19]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/i-ask-the-impossible-love-me-forever-love-me-when-all-desire-is-gone-love-me-with-the-single-mindedn.jpg
-[10-Feb-2020 12:01:19]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:01:19]---LAST_QUERY---
-[10-Feb-2020 12:01:19]SELECT * FROM wp_posts WHERE ID = 9130 LIMIT 1
-[10-Feb-2020 12:01:19]9130
-[10-Feb-2020 12:01:20]add_attachment post_id =9129attachment_id=9130
-[10-Feb-2020 12:01:20]POST_TYPE==post
-[10-Feb-2020 12:01:20]POST_TYPE==post
-[10-Feb-2020 12:01:20]post_status==publish
-[10-Feb-2020 12:01:20]called_image_function  post_id==9131
-[10-Feb-2020 12:01:22]image find=9131
-[10-Feb-2020 12:01:22]generate_image
-[10-Feb-2020 12:01:23]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/the-only-love-that-i-really-believe-in-is-a-mothers-love-for-her-children-e28095-karl-lagerfeld.jpg
-[10-Feb-2020 12:01:23]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/the-only-love-that-i-really-believe-in-is-a-mothers-love-for-her-children-e28095-karl-lagerfeld.jpg
-[10-Feb-2020 12:01:23]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:01:23]---LAST_QUERY---
-[10-Feb-2020 12:01:23]SELECT * FROM wp_posts WHERE ID = 9132 LIMIT 1
-[10-Feb-2020 12:01:23]9132
-[10-Feb-2020 12:01:23]add_attachment post_id =9131attachment_id=9132
-[10-Feb-2020 12:01:23]POST_TYPE==post
-[10-Feb-2020 12:01:24]POST_TYPE==post
-[10-Feb-2020 12:01:24]post_status==publish
-[10-Feb-2020 12:01:24]called_image_function  post_id==9133
-[10-Feb-2020 12:01:28]image find=9133
-[10-Feb-2020 12:01:28]generate_image
-[10-Feb-2020 12:01:28]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/it-does-not-matter-how-long-you-are-spending-on-the-earth-how-much-money-you-have-gathered-or-how-mu.jpg
-[10-Feb-2020 12:01:28]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/it-does-not-matter-how-long-you-are-spending-on-the-earth-how-much-money-you-have-gathered-or-how-mu.jpg
-[10-Feb-2020 12:01:28]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:01:28]---LAST_QUERY---
-[10-Feb-2020 12:01:28]SELECT * FROM wp_posts WHERE ID = 9134 LIMIT 1
-[10-Feb-2020 12:01:28]9134
-[10-Feb-2020 12:01:29]add_attachment post_id =9133attachment_id=9134
-[10-Feb-2020 12:01:29]POST_TYPE==post
-[10-Feb-2020 12:01:29]POST_TYPE==post
-[10-Feb-2020 12:01:29]post_status==publish
-[10-Feb-2020 12:01:29]called_image_function  post_id==9135
-[10-Feb-2020 12:01:33]image find=9135
-[10-Feb-2020 12:01:33]generate_image
-[10-Feb-2020 12:01:33]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/ah-she-cried-you-look-so-cool-their-eyes-met-and-they-stared-together-at-each-other-alone-in-space-w.jpg
-[10-Feb-2020 12:01:33]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/ah-she-cried-you-look-so-cool-their-eyes-met-and-they-stared-together-at-each-other-alone-in-space-w.jpg
-[10-Feb-2020 12:01:33]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:01:33]---LAST_QUERY---
-[10-Feb-2020 12:01:33]SELECT * FROM wp_posts WHERE ID = 9136 LIMIT 1
-[10-Feb-2020 12:01:33]9136
-[10-Feb-2020 12:01:34]add_attachment post_id =9135attachment_id=9136
-[10-Feb-2020 12:01:34]POST_TYPE==post
-[10-Feb-2020 12:01:34]POST_TYPE==post
-[10-Feb-2020 12:01:34]post_status==publish
-[10-Feb-2020 12:01:34]called_image_function  post_id==9137
-[10-Feb-2020 12:01:38]image find=9137
-[10-Feb-2020 12:01:38]generate_image
-[10-Feb-2020 12:01:39]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/it-was-the-pure-language-of-the-world-it-required-no-explanation-just-as-the-universe-needs-none-as-.jpg
-[10-Feb-2020 12:01:39]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/it-was-the-pure-language-of-the-world-it-required-no-explanation-just-as-the-universe-needs-none-as-.jpg
-[10-Feb-2020 12:01:39]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:01:39]---LAST_QUERY---
-[10-Feb-2020 12:01:39]SELECT * FROM wp_posts WHERE ID = 9138 LIMIT 1
-[10-Feb-2020 12:01:39]9138
-[10-Feb-2020 12:01:40]add_attachment post_id =9137attachment_id=9138
-[10-Feb-2020 12:01:40]POST_TYPE==post
-[10-Feb-2020 12:01:40]POST_TYPE==post
-[10-Feb-2020 12:01:40]post_status==publish
-[10-Feb-2020 12:01:40]called_image_function  post_id==9139
-[10-Feb-2020 12:01:44]image find=9139
-[10-Feb-2020 12:01:44]generate_image
-[10-Feb-2020 12:01:45]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/i-dont-want-to-hurt-you-or-anybody-so-please-forget-about-me-just-try-find-yourself-a-better-friend-.jpg
-[10-Feb-2020 12:01:45]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/i-dont-want-to-hurt-you-or-anybody-so-please-forget-about-me-just-try-find-yourself-a-better-friend-.jpg
-[10-Feb-2020 12:01:45]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:01:45]---LAST_QUERY---
-[10-Feb-2020 12:01:45]SELECT * FROM wp_posts WHERE ID = 9140 LIMIT 1
-[10-Feb-2020 12:01:45]9140
-[10-Feb-2020 12:01:45]add_attachment post_id =9139attachment_id=9140
-[10-Feb-2020 12:01:45]POST_TYPE==post
-[10-Feb-2020 12:01:46]POST_TYPE==post
-[10-Feb-2020 12:01:46]post_status==publish
-[10-Feb-2020 12:01:46]called_image_function  post_id==9141
-[10-Feb-2020 12:01:49]image find=9141
-[10-Feb-2020 12:01:49]generate_image
-[10-Feb-2020 12:01:49]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/then-i-discovered-that-being-related-is-no-guarantee-of-love-e28095-stieg-larsson-the-girl-with-the-.jpg
-[10-Feb-2020 12:01:49]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/then-i-discovered-that-being-related-is-no-guarantee-of-love-e28095-stieg-larsson-the-girl-with-the-.jpg
-[10-Feb-2020 12:01:49]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:01:49]---LAST_QUERY---
-[10-Feb-2020 12:01:49]SELECT * FROM wp_posts WHERE ID = 9142 LIMIT 1
-[10-Feb-2020 12:01:49]9142
-[10-Feb-2020 12:01:49]add_attachment post_id =9141attachment_id=9142
-[10-Feb-2020 12:01:49]POST_TYPE==post
-[10-Feb-2020 12:01:50]POST_TYPE==post
-[10-Feb-2020 12:01:50]post_status==publish
-[10-Feb-2020 12:01:50]called_image_function  post_id==9143
-[10-Feb-2020 12:01:54]image find=9143
-[10-Feb-2020 12:01:54]generate_image
-[10-Feb-2020 12:01:54]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/true-love-begins-when-nothing-is-looked-for-in-return-e28095-antoine-de-saint-exupery.jpg
-[10-Feb-2020 12:01:54]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/true-love-begins-when-nothing-is-looked-for-in-return-e28095-antoine-de-saint-exupery.jpg
-[10-Feb-2020 12:01:54]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:01:54]---LAST_QUERY---
-[10-Feb-2020 12:01:54]SELECT * FROM wp_posts WHERE ID = 9144 LIMIT 1
-[10-Feb-2020 12:01:54]9144
-[10-Feb-2020 12:01:55]add_attachment post_id =9143attachment_id=9144
-[10-Feb-2020 12:01:55]POST_TYPE==post
-[10-Feb-2020 12:01:55]POST_TYPE==post
-[10-Feb-2020 12:01:55]post_status==publish
-[10-Feb-2020 12:01:55]called_image_function  post_id==9145
-[10-Feb-2020 12:01:57]image find=9145
-[10-Feb-2020 12:01:57]generate_image
-[10-Feb-2020 12:01:57]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/as-lovers-the-difference-between-men-and-women-is-that-women-can-love-all-day-long-but-men-only-at-t.jpg
-[10-Feb-2020 12:01:57]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/as-lovers-the-difference-between-men-and-women-is-that-women-can-love-all-day-long-but-men-only-at-t.jpg
-[10-Feb-2020 12:01:57]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:01:57]---LAST_QUERY---
-[10-Feb-2020 12:01:57]SELECT * FROM wp_posts WHERE ID = 9146 LIMIT 1
-[10-Feb-2020 12:01:57]9146
-[10-Feb-2020 12:01:58]add_attachment post_id =9145attachment_id=9146
-[10-Feb-2020 12:01:58]POST_TYPE==post
-[10-Feb-2020 12:01:58]POST_TYPE==post
-[10-Feb-2020 12:01:58]post_status==publish
-[10-Feb-2020 12:01:58]called_image_function  post_id==9147
-[10-Feb-2020 12:02:00]image find=9147
-[10-Feb-2020 12:02:00]generate_image
-[10-Feb-2020 12:02:00]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/what-you-are-is-a-fucking-tragedy-simon-snow-you-literally-couldnt-be-a-bigger-mess-he-tries-to-kiss.jpg
-[10-Feb-2020 12:02:00]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/what-you-are-is-a-fucking-tragedy-simon-snow-you-literally-couldnt-be-a-bigger-mess-he-tries-to-kiss.jpg
-[10-Feb-2020 12:02:00]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:02:00]---LAST_QUERY---
-[10-Feb-2020 12:02:00]SELECT * FROM wp_posts WHERE ID = 9148 LIMIT 1
-[10-Feb-2020 12:02:00]9148
-[10-Feb-2020 12:02:01]add_attachment post_id =9147attachment_id=9148
-[10-Feb-2020 12:02:01]POST_TYPE==post
-[10-Feb-2020 12:02:01]POST_TYPE==post
-[10-Feb-2020 12:02:01]post_status==publish
-[10-Feb-2020 12:02:01]called_image_function  post_id==9149
-[10-Feb-2020 12:02:03]image find=9149
-[10-Feb-2020 12:02:03]generate_image
-[10-Feb-2020 12:02:04]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/i-do-not-think-i-ever-opened-a-book-in-my-life-which-had-not-something-to-say-upon-womans-inconstanc.jpg
-[10-Feb-2020 12:02:04]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/i-do-not-think-i-ever-opened-a-book-in-my-life-which-had-not-something-to-say-upon-womans-inconstanc.jpg
-[10-Feb-2020 12:02:04]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:02:04]---LAST_QUERY---
-[10-Feb-2020 12:02:04]SELECT * FROM wp_posts WHERE ID = 9150 LIMIT 1
-[10-Feb-2020 12:02:04]9150
-[10-Feb-2020 12:02:04]add_attachment post_id =9149attachment_id=9150
-[10-Feb-2020 12:02:04]POST_TYPE==post
-[10-Feb-2020 12:02:05]POST_TYPE==post
-[10-Feb-2020 12:02:05]post_status==publish
-[10-Feb-2020 12:02:05]called_image_function  post_id==9151
-[10-Feb-2020 12:02:08]image find=9151
-[10-Feb-2020 12:02:08]generate_image
-[10-Feb-2020 12:02:09]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/ill-be-looking-for-you-will-every-moment-every-single-moment-and-when-we-do-find-each-other-again-we.jpg
-[10-Feb-2020 12:02:09]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/ill-be-looking-for-you-will-every-moment-every-single-moment-and-when-we-do-find-each-other-again-we.jpg
-[10-Feb-2020 12:02:09]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:02:09]---LAST_QUERY---
-[10-Feb-2020 12:02:09]SELECT * FROM wp_posts WHERE ID = 9152 LIMIT 1
-[10-Feb-2020 12:02:09]9152
-[10-Feb-2020 12:02:10]add_attachment post_id =9151attachment_id=9152
-[10-Feb-2020 12:02:10]POST_TYPE==post
-[10-Feb-2020 12:02:10]POST_TYPE==post
-[10-Feb-2020 12:02:10]post_status==publish
-[10-Feb-2020 12:02:10]called_image_function  post_id==9153
-[10-Feb-2020 12:02:14]image find=9153
-[10-Feb-2020 12:02:14]generate_image
-[10-Feb-2020 12:02:14]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/when-people-fall-in-love-they-burst-into-flames-e28095-jandy-nelson-ill-give-you-the-sun.jpg
-[10-Feb-2020 12:02:14]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/when-people-fall-in-love-they-burst-into-flames-e28095-jandy-nelson-ill-give-you-the-sun.jpg
-[10-Feb-2020 12:02:15]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:02:15]---LAST_QUERY---
-[10-Feb-2020 12:02:15]SELECT * FROM wp_posts WHERE ID = 9154 LIMIT 1
-[10-Feb-2020 12:02:15]9154
-[10-Feb-2020 12:02:15]add_attachment post_id =9153attachment_id=9154
-[10-Feb-2020 12:02:15]POST_TYPE==post
-[10-Feb-2020 12:02:16]POST_TYPE==post
-[10-Feb-2020 12:02:16]post_status==publish
-[10-Feb-2020 12:02:16]called_image_function  post_id==9155
-[10-Feb-2020 12:02:20]image find=9155
-[10-Feb-2020 12:02:20]generate_image
-[10-Feb-2020 12:02:20]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/youre-an-expert-at-sorry-and-keeping-the-lines-blurry-e28095-taylor-swift.jpg
-[10-Feb-2020 12:02:20]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/youre-an-expert-at-sorry-and-keeping-the-lines-blurry-e28095-taylor-swift.jpg
-[10-Feb-2020 12:02:20]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:02:20]---LAST_QUERY---
-[10-Feb-2020 12:02:20]SELECT * FROM wp_posts WHERE ID = 9156 LIMIT 1
-[10-Feb-2020 12:02:20]9156
-[10-Feb-2020 12:02:21]add_attachment post_id =9155attachment_id=9156
-[10-Feb-2020 12:02:21]POST_TYPE==post
-[10-Feb-2020 12:02:21]POST_TYPE==post
-[10-Feb-2020 12:02:21]post_status==publish
-[10-Feb-2020 12:02:21]called_image_function  post_id==9157
-[10-Feb-2020 12:02:25]image find=9157
-[10-Feb-2020 12:02:25]generate_image
-[10-Feb-2020 12:02:25]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/i-think-in-the-end-you-would-have-stayed-with-me-out-of-obligation-or-maybe-comfort-maybe-i-was-safe.jpg
-[10-Feb-2020 12:02:25]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/i-think-in-the-end-you-would-have-stayed-with-me-out-of-obligation-or-maybe-comfort-maybe-i-was-safe.jpg
-[10-Feb-2020 12:02:25]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:02:25]---LAST_QUERY---
-[10-Feb-2020 12:02:25]SELECT * FROM wp_posts WHERE ID = 9158 LIMIT 1
-[10-Feb-2020 12:02:25]9158
-[10-Feb-2020 12:02:26]add_attachment post_id =9157attachment_id=9158
-[10-Feb-2020 12:02:26]POST_TYPE==post
-[10-Feb-2020 12:02:26]POST_TYPE==post
-[10-Feb-2020 12:02:26]post_status==publish
-[10-Feb-2020 12:02:26]called_image_function  post_id==9159
-[10-Feb-2020 12:02:29]image find=9159
-[10-Feb-2020 12:02:29]generate_image
-[10-Feb-2020 12:02:30]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/well-its-true-that-i-have-been-hurt-in-my-life-quite-a-bit-but-its-also-true-that-i-have-loved-and-b.jpg
-[10-Feb-2020 12:02:30]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/well-its-true-that-i-have-been-hurt-in-my-life-quite-a-bit-but-its-also-true-that-i-have-loved-and-b.jpg
-[10-Feb-2020 12:02:30]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:02:30]---LAST_QUERY---
-[10-Feb-2020 12:02:30]SELECT * FROM wp_posts WHERE ID = 9160 LIMIT 1
-[10-Feb-2020 12:02:30]9160
-[10-Feb-2020 12:02:30]add_attachment post_id =9159attachment_id=9160
-[10-Feb-2020 12:02:30]POST_TYPE==post
-[10-Feb-2020 12:02:31]POST_TYPE==post
-[10-Feb-2020 12:02:31]post_status==publish
-[10-Feb-2020 12:02:31]called_image_function  post_id==9161
-[10-Feb-2020 12:02:33]image find=9161
-[10-Feb-2020 12:02:33]generate_image
-[10-Feb-2020 12:02:33]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/i-didnt-want-to-kiss-you-goodbye-that-was-the-trouble-i-wanted-to-kiss-you-good-night-and-theres-a-l.jpg
-[10-Feb-2020 12:02:33]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/i-didnt-want-to-kiss-you-goodbye-that-was-the-trouble-i-wanted-to-kiss-you-good-night-and-theres-a-l.jpg
-[10-Feb-2020 12:02:33]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:02:33]---LAST_QUERY---
-[10-Feb-2020 12:02:33]SELECT * FROM wp_posts WHERE ID = 9162 LIMIT 1
-[10-Feb-2020 12:02:33]9162
-[10-Feb-2020 12:02:34]add_attachment post_id =9161attachment_id=9162
-[10-Feb-2020 12:02:34]POST_TYPE==post
-[10-Feb-2020 12:02:34]POST_TYPE==post
-[10-Feb-2020 12:02:34]post_status==publish
-[10-Feb-2020 12:02:34]called_image_function  post_id==9163
-[10-Feb-2020 12:02:38]image find=9163
-[10-Feb-2020 12:02:38]generate_image
-[10-Feb-2020 12:02:38]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/in-my-rush-i-hadnt-tied-my-shoelaces-noah-was-now-tying-them-for-me-he-looked-up-at-me-through-his-d.jpg
-[10-Feb-2020 12:02:38]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/in-my-rush-i-hadnt-tied-my-shoelaces-noah-was-now-tying-them-for-me-he-looked-up-at-me-through-his-d.jpg
-[10-Feb-2020 12:02:38]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:02:38]---LAST_QUERY---
-[10-Feb-2020 12:02:38]SELECT * FROM wp_posts WHERE ID = 9164 LIMIT 1
-[10-Feb-2020 12:02:38]9164
-[10-Feb-2020 12:02:39]add_attachment post_id =9163attachment_id=9164
-[10-Feb-2020 12:02:39]POST_TYPE==post
-[10-Feb-2020 12:02:39]POST_TYPE==post
-[10-Feb-2020 12:02:39]post_status==publish
-[10-Feb-2020 12:02:39]called_image_function  post_id==9165
-[10-Feb-2020 12:02:40]image find=9165
-[10-Feb-2020 12:02:40]generate_image
-[10-Feb-2020 12:02:41]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/its-the-same-with-people-who-say-whatever-doesnt-kill-you-makes-you-stronger-even-people-who-say-thi.jpg
-[10-Feb-2020 12:02:41]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/its-the-same-with-people-who-say-whatever-doesnt-kill-you-makes-you-stronger-even-people-who-say-thi.jpg
-[10-Feb-2020 12:02:41]---AFTER_ATTACHMENT---
-[10-Feb-2020 12:02:41]---LAST_QUERY---
-[10-Feb-2020 12:02:41]SELECT * FROM wp_posts WHERE ID = 9166 LIMIT 1
-[10-Feb-2020 12:02:41]9166
-[10-Feb-2020 12:02:41]add_attachment post_id =9165attachment_id=9166
-[10-Feb-2020 12:02:41]POST_TYPE==post
+[11-Feb-2020 04:53:30]
+[11-Feb-2020 04:53:40]
+[11-Feb-2020 04:53:40]Array
+(
+    [0] => love
+    [1] => life
+    [2] => inspirational
+    [3] => humor
+    [4] => philosophy
+    [5] => god
+    [6] => inspirational quotes
+    [7] => truth
+    [8] => wisdom
+    [9] => romance
+    [10] => poetry
+    [11] => death
+    [12] => hapiness
+    [13] => hope
+    [14] => faith
+    [15] => writing
+    [16] => inspiration
+    [17] => quotes
+    [18] => religion
+    [19] => life lessons
+    [20] => success
+    [21] => relationships
+    [22] => motivational
+    [23] => time
+    [24] => knowledge
+    [25] => love quotes
+    [26] => spirituality
+    [27] => science
+    [28] => books
+    [29] => education
+)
+
+[11-Feb-2020 04:53:40]
+[11-Feb-2020 04:58:42]
+[11-Feb-2020 04:58:42]
+[11-Feb-2020 05:15:03]
+[11-Feb-2020 05:15:03]
+[11-Feb-2020 05:20:36]
+[11-Feb-2020 05:20:36]
+[11-Feb-2020 05:26:45]
+[11-Feb-2020 05:26:45]
+[11-Feb-2020 08:19:54]
+[11-Feb-2020 08:19:54]
+[11-Feb-2020 08:20:17]
+[11-Feb-2020 08:20:17]
+[11-Feb-2020 08:20:19]POST_TYPE==scheduled-action
+[11-Feb-2020 08:20:19]post_status==pending
+[11-Feb-2020 08:20:19]called_image_function  post_id==9174
+[11-Feb-2020 08:20:21]image find=9174
+[11-Feb-2020 08:20:21]generate_image
+[11-Feb-2020 08:21:09]POST_TYPE==revision
+[11-Feb-2020 08:21:10]POST_TYPE==page
+[11-Feb-2020 08:21:10]post_status==publish
+[11-Feb-2020 08:21:10]called_image_function  post_id==1262
+[11-Feb-2020 08:21:13]image find=1262
+[11-Feb-2020 08:21:13]generate_image
+[11-Feb-2020 08:21:13]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/gst-cal.jpg
+[11-Feb-2020 08:21:13]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/gst-cal.jpg
+[11-Feb-2020 08:21:13]---AFTER_ATTACHMENT---
+[11-Feb-2020 08:21:13]---LAST_QUERY---
+[11-Feb-2020 08:21:13]SELECT * FROM wp_posts WHERE ID = 9176 LIMIT 1
+[11-Feb-2020 08:21:13]9176
+[11-Feb-2020 08:21:14]add_attachment post_id =1262attachment_id=9176
+[11-Feb-2020 08:21:44]POST_TYPE==scheduled-action
+[11-Feb-2020 08:21:44]post_status==publish
+[11-Feb-2020 08:21:44]called_image_function  post_id==9174
+[11-Feb-2020 08:21:47]image find=9174
+[11-Feb-2020 08:21:47]generate_image
+[11-Feb-2020 08:24:28]POST_TYPE==page
+[11-Feb-2020 08:24:28]post_status==auto-draft
+[11-Feb-2020 08:24:45]POST_TYPE==revision
+[11-Feb-2020 08:24:45]POST_TYPE==page
+[11-Feb-2020 08:24:45]post_status==publish
+[11-Feb-2020 08:24:45]called_image_function  post_id==9177
+[11-Feb-2020 08:24:48]image find=9177
+[11-Feb-2020 08:24:48]generate_image
+[11-Feb-2020 08:24:48]newimg_url===http://myplugin.local/wp-content/uploads/2020/02/64mb-32mb.jpg
+[11-Feb-2020 08:24:48]newimg===C:\xampp\htdocs\myplugin/wp-content/uploads/2020/02/64mb-32mb.jpg
+[11-Feb-2020 08:24:48]---AFTER_ATTACHMENT---
+[11-Feb-2020 08:24:48]---LAST_QUERY---
+[11-Feb-2020 08:24:48]SELECT * FROM wp_posts WHERE ID = 9179 LIMIT 1
+[11-Feb-2020 08:24:48]9179
+[11-Feb-2020 08:24:49]add_attachment post_id =9177attachment_id=9179
+[11-Feb-2020 08:25:01]
+[11-Feb-2020 08:25:01]
+[11-Feb-2020 08:30:16]
+[11-Feb-2020 08:30:16]
+[11-Feb-2020 08:35:08]
+[11-Feb-2020 08:35:08]
+[11-Feb-2020 08:40:09]
+[11-Feb-2020 08:40:09]
+[11-Feb-2020 08:46:11]
+[11-Feb-2020 08:46:11]
+[11-Feb-2020 08:50:11]
+[11-Feb-2020 08:50:11]
+[11-Feb-2020 08:55:05]
+[11-Feb-2020 08:55:05]
+[11-Feb-2020 09:00:09]
+[11-Feb-2020 09:00:09]
+[11-Feb-2020 09:06:59]
+[11-Feb-2020 09:06:59]
+[11-Feb-2020 09:11:00]
+[11-Feb-2020 09:11:00]
+[11-Feb-2020 09:16:59]
+[11-Feb-2020 09:16:59]
+[11-Feb-2020 09:20:52]
+[11-Feb-2020 09:20:52]
+[11-Feb-2020 09:25:09]
+[11-Feb-2020 09:25:09]
+[11-Feb-2020 09:31:10]
+[11-Feb-2020 09:31:10]

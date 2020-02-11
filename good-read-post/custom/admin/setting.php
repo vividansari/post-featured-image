@@ -108,7 +108,7 @@ class GrpPluginSettingTab
 	}
 
 	public function grp_admin_tabs( $current = 'homepage' ) {
-	    $tabs = array( 'general' => 'General', 'image' => 'Image' ,'text' => 'Text' , 'cron_details' => 'Cron Details' ,'upload' => 'Upload' );
+	    $tabs = array( 'general' => 'General', 'image' => 'Image' ,'text' => 'Text' , 'cron_details' => 'Cron Details' ,'upload_tag_csv' => 'Upload Tag csv', 'upload_author_csv' => 'Upload Author csv' );
 	    $links = array();
 	    echo '<div id="icon-themes" class="icon32"><br></div>';
 	    echo '<h2 class="nav-tab-wrapper">';
@@ -161,8 +161,11 @@ class GrpPluginSettingTab
 							case 'cron_details':
 								include 'tabs/cron_details.php';
 							break;
-							case 'upload':
+							case 'upload_tag_csv':
 								include 'tabs/upload.php';
+							break;
+							case 'upload_author_csv':
+								include 'tabs/upload_author.php';
 							break;
 
 						}

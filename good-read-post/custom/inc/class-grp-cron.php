@@ -45,8 +45,10 @@ class grpCron
 
 	public function grp_get_data_process(){
 		$settings = get_option( "grp_plugin_settings" );
+		$author_arr = get_option('grp_author_csv');
+		grp_post::grp_log(print_r($author_arr,true));
 		$new_tag_arr = get_option('grp_tag_csv_key');
-		grp_post::grp_log(print_r($new_tag_arr,true));
+		// grp_post::grp_log(print_r($new_tag_arr,true));
 		// $new_tag_arr = array(
 		// 	'love',
 		// 	'life',
@@ -108,10 +110,12 @@ class grpCron
 			if($cron_done != 'yes'){
 
 				$author_key = get_option('grp_cron_author_key');
+				grp_post::grp_log(print_r($author_key,true));
 				$author_key = !empty( $author_key ) ? $author_key : 0;
 				//grp_post::grp_log('--author_key--'.$author_key);
 				#get author
-				$author_arr = get_option( 'grp_author_data' );
+				$author_arr = get_option('grp_author_csv_key');
+				// $author_arr = get_option( 'grp_author_data' );
 				$last_author_key = count($author_arr);
 				if( !empty( $author_arr ) ){
 					$grp_post = new grpPost();

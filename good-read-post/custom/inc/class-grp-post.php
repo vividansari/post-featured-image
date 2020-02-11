@@ -73,6 +73,7 @@ class grpPost
 			}
 
 		}
+
 	}
 
 	public function grp_author_post_last_page( $tag ){
