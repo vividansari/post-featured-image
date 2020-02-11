@@ -2,9 +2,9 @@
 /**
  * adding the plugin setting
  */
-class GrpPluginSettingTab 
+class GrpPluginSettingTab
 {
-	
+
 	function __construct(){
 		add_action( 'admin_menu', array($this , 'grp_settings_page_init' ) );
 
@@ -32,14 +32,14 @@ class GrpPluginSettingTab
 		$settings = get_option( "grp_plugin_settings" );
 
 
-		
+
 		#for cron reset parameters if they change old data
 		if(isset( $_POST['grp_tag'] ) && ( $settings['grp_tag'] == $_POST['grp_tag'] ) ){
 			#check its change the page number
 			if( isset( $_POST['grp_tag_total_page'] ) && ( $settings['grp_tag_total_page'] == $_POST['grp_tag_total_page'] ) ){
 
 			}else if( isset( $_POST['grp_tag_total_page'] ) ){
-				
+
 				if( $setting['grp_tag_total_page'] < $_POST['grp_tag_total_page'] ){
 					update_option( 'grp_cron_completed', 'no' );
 				}
@@ -48,30 +48,30 @@ class GrpPluginSettingTab
 		}else if( isset( $_POST['grp_tag'] ) ){
 			#reset all parameters
 			update_option( 'grp_cron_current_page', 1 );
-			update_option( 'grp_cron_completed', 'no' );	
+			update_option( 'grp_cron_completed', 'no' );
 		}else{
 			#reset all parameters
 			update_option( 'grp_cron_current_page', 1 );
-			update_option( 'grp_cron_completed', 'no' );	
+			update_option( 'grp_cron_completed', 'no' );
 		}
 
-		if ( $pagenow == 'admin.php' && $_GET['page'] == 'grp-settings' ){ 
+		if ( $pagenow == 'admin.php' && $_GET['page'] == 'grp-settings' ){
 			if ( isset ( $_GET['tab'] ) )
-		        $tab = $_GET['tab']; 
+		        $tab = $_GET['tab'];
 		    else
-		        $tab = 'general'; 
+		        $tab = 'general';
 
-		    switch ( $tab ){ 
+		    switch ( $tab ){
 		        case 'general' :
 					//$settings['ilc_tag_class']	  = $_POST['ilc_tag_class'];
 					$settings['grp_tag'] = $_POST['grp_tag'];
 					$settings['grp_tag_total_page'] = $_POST['grp_tag_total_page'];
-				break; 
+				break;
 		        case 'image' :
 		        	$settings['grp_pixabay_api']  = $_POST['grp_pixabay_api'];
 		        	$settings['grp_copyright_text']  = $_POST['grp_copyright_text'];
 		        	$settings['grp_pixabay_q_tag']  = $_POST['grp_pixabay_q_tag'];
-		        	
+
 		        	$settings['grp_pixabay_cat']  = $_POST['grp_pixabay_cat'];
 
 				break;
@@ -81,7 +81,7 @@ class GrpPluginSettingTab
 					$settings['grp_copy_right_text_color'] = $_POST['grp_copy_right_text_color'];
 					$settings['grp_text_size'] = $_POST['grp_text_size'];
 					$settings['grp_copyright_text_size'] = $_POST['grp_copyright_text_size'];
-					
+
 					$settings['grp_copy_right_text_color'] = $_POST['grp_copy_right_text_color'];
 					$settings['grp_copy_right_text_color'] = $_POST['grp_copy_right_text_color'];
 
@@ -92,30 +92,30 @@ class GrpPluginSettingTab
 					$settings['grp_padding_top'] = $_POST['grp_padding_top'];
 					$settings['grp_padding_bottom'] = $_POST['grp_padding_bottom'];
 					$settings['grp_padding_left'] = $_POST['grp_padding_left'];
-					$settings['grp_padding_right'] = $_POST['grp_padding_right'];					
+					$settings['grp_padding_right'] = $_POST['grp_padding_right'];
 
-					
+
 				break;
-				case 'homepage' : 
+				case 'homepage' :
 					$settings['ilc_intro']	  = $_POST['ilc_intro'];
 				break;
 		    }
 		}
-		
-		
+
+
 
 		$updated = update_option( "grp_plugin_settings", $settings );
 	}
 
-	public function grp_admin_tabs( $current = 'homepage' ) { 
-	    $tabs = array( 'general' => 'General', 'image' => 'Image' ,'text' => 'Text' , 'cron_details' => 'Cron Details' ); 
+	public function grp_admin_tabs( $current = 'homepage' ) {
+	    $tabs = array( 'general' => 'General', 'image' => 'Image' ,'text' => 'Text' , 'cron_details' => 'Cron Details' ,'upload' => 'Upload' );
 	    $links = array();
 	    echo '<div id="icon-themes" class="icon32"><br></div>';
 	    echo '<h2 class="nav-tab-wrapper">';
 	    foreach( $tabs as $tab => $name ){
 	        $class = ( $tab == $current ) ? ' nav-tab-active' : '';
 	        echo "<a class='nav-tab$class' href='?page=grp-settings&tab=$tab'>$name</a>";
-	        
+
 	    }
 	    echo '</h2>';
 	}
@@ -124,44 +124,47 @@ class GrpPluginSettingTab
 		wp_enqueue_script('grp_admin_js');
 		global $pagenow;
 		$settings = get_option( "grp_plugin_settings" );
-		
+
 		?>
-		
+
 		<div class="wrap">
 			<h2>Good Reads Plugin Settings</h2>
-			
+
 			<?php
 				if ( 'true' == esc_attr( $_GET['updated'] ) ) echo '<div class="updated" ><p> Settings updated.</p></div>';
-				
+
 				if ( isset ( $_GET['tab'] ) ) $this->grp_admin_tabs($_GET['tab']); else $this->grp_admin_tabs('general');
 			?>
 
 			<div id="poststuff">
-				<form method="post" action="<?php admin_url( 'admin.php?page=grp-settings' ); ?>">
+				<form method="post" action="<?php admin_url( 'admin.php?page=grp-settings' ); ?>" accept-charset="utf-8" enctype="multipart/form-data" id="grp_form_id" name="grp_form">
 					<?php
-					wp_nonce_field( "grp-settings-page" ); 
-					
-					if ( $pagenow == 'admin.php' && $_GET['page'] == 'grp-settings' ){ 
-					
-						if ( isset ( $_GET['tab'] ) ) $tab = $_GET['tab']; 
-						else $tab = 'general'; 
-						
+					wp_nonce_field( "grp-settings-page" );
+
+					if ( $pagenow == 'admin.php' && $_GET['page'] == 'grp-settings' ){
+
+						if ( isset ( $_GET['tab'] ) ) $tab = $_GET['tab'];
+						else $tab = 'general';
+
 						echo '<table class="form-table">';
 						switch ( $tab ){
 							case 'general' :
 								include 'tabs/general.php';
-							break; 
-							case 'image' : 
+							break;
+							case 'image' :
 								include 'tabs/image.php';
 							break;
-							case 'text' : 
+							case 'text' :
 								include 'tabs/text.php';
 							break;
 
-							case 'cron_details': 
+							case 'cron_details':
 								include 'tabs/cron_details.php';
 							break;
-							
+							case 'upload':
+								include 'tabs/upload.php';
+							break;
+
 						}
 						echo '</table>';
 					}
@@ -171,7 +174,7 @@ class GrpPluginSettingTab
 						<input type="hidden" name="grp-settings-submit" value="Y" />
 					</p>
 				</form>
-				
+
 			</div>
 
 		</div>
