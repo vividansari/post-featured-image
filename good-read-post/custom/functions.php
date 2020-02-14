@@ -107,10 +107,10 @@ function get_gr_author_list(){
 
 	wp_die();
 }
-// add_action('init','ss_new_test');
-// function ss_new_test(){
-//    do_action('grp_get_data_cron') ;
-// }
+/*add_action('init','ss_new_test');
+function ss_new_test(){
+   do_action('grp_get_data_cron') ;
+}*/
 
 // upload tag csv file.
 function get_grp_tag_csv()
@@ -177,11 +177,11 @@ function get_grp_author_csv()
 {
   if (isset($_POST['grp_form']))
   {
+
     // echo "<pre>";
     // print_r($_POST);
     // echo "</pre>";
     // die();
-
     if (!empty($_FILES))
     {
 
@@ -194,6 +194,7 @@ function get_grp_author_csv()
       $new_filename = $uploaddir . $num . str_replace(" ", "", basename($_FILES['author_csv']['name']));
       if (move_uploaded_file($_FILES['author_csv']['tmp_name'], $new_filename))
       {
+
         /*********** Get array of CSV files ****************/
         $files = glob($new_filename) ;
         $file=$files[0];
@@ -204,39 +205,27 @@ function get_grp_author_csv()
         }
         /******** Check if file is writable, then open it in 'read only' mode *********/
         if(is_readable($file) && $_file = fopen($file,'r')){
-          $author_arr=array();
+          $post=array();
 
            //get header of csv file
           $header=fgetcsv($_file);
            //row, column by column, saving all the data
-          while($row =fgetcsv($_file)){
-              $author_arr[] = trim($row[0]);
-              $author_option = get_option('grp__author_names');
-              if( empty( $author_option ) ){
-                $author_option = array();
-                $author_option[] = $row[0];
-              }else{
+            while($row =fgetcsv($_file)){
+            $author_option = get_option('grp__author_names');
+            $author_arr[] = trim($row[0]);
+            if( empty( $author_option ) ){
+              $author_option = array();
+              $author_option[] = $row[0];
+            }
+            else{
+              if (!in_array($row[0] , $author_option))
+              {
                 $author_option[] = $row[0];
               }
-              update_option( 'grp__author_names', $author_option );
+            }
+            update_option( 'grp__author_names', $author_option );
           }
-
-          // $data =$post;
           fclose($_file);
-         /* echo "<pre>";
-          print_r($author_arr);
-          echo "</pre>";*/
-          update_option( 'checking_new_ansari', 'Yes' );
-          $new_arr = maybe_serialize($author_arr);
-          echo "new_arr = $new_arr";
-          update_option( 'checking_new_ansari_new',  $new_arr );
-          update_option( 'checking_new_ansari_1', 'Yes' );
-          if (!empty($post) && count($post) > 0)
-          {
-            // echo "in if";
-            update_option('grp_author_csv', $post);
-
-          }
           echo "success";
 
         }

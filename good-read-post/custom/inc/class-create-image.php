@@ -54,17 +54,14 @@ class vaGenerateImage
 	    }
 	    
 	    if( !empty( $backgroundimg ) ){
-	    	grp_post::grp_log('image find='.$post_id);
 	    	$this->generate_image($backgroundimg, $post_id );
 	    }else{
-	    	grp_post::grp_log('image not find='.$post_id);
 	    	$temp_file = GRP_IMAGE_DIR . 'temp.jpg';
 	    	$this->generate_image($temp_file, $post_id );
 	    }
 	}
 
 	public static function generate_image( $backgroundimg , $post_id = '' ){
-		grp_post::grp_log('generate_image');
 		$settings = get_option( "grp_plugin_settings" );
 		$va_image_resize = 'crop';
 	    $auto_image_width = 1130;
@@ -525,8 +522,6 @@ class vaGenerateImage
 		else {
 			$post_excerpt = $attachment_array['caption'];
 			}
-	  	grp_post::grp_log("newimg_url===".$newimg_url);
-	  	grp_post::grp_log("newimg===".$newimg);
 	  	global $wpdb;
 	    $attachment = array(
 	        'guid'           => $newimg_url, 
@@ -537,16 +532,10 @@ class vaGenerateImage
 	        'post_status'    => 'inherit'
 	    );
 	    $attach_id = wp_insert_attachment( $attachment, $newimg, $post_id , true );
-	    grp_post::grp_log('---AFTER_ATTACHMENT---');
-	    grp_post::grp_log('---LAST_QUERY---');
-		grp_post::grp_log($wpdb->last_query);
 
-// Print last SQL query string
-
-	    grp_post::grp_log( print_r( $attach_id, true ) );
+		// Print last SQL query string
 	    if(is_wp_error( $attach_id ) ){
-	    	grp_post::grp_log('__ATTACHMEN_ERROR__');
-	    	grp_post::grp_log( print_r( $attach_id, true ) );
+	    	
 	    }
 	    require_once( ABSPATH . 'wp-admin/includes/image.php' );
 	    $attach_data = wp_generate_attachment_metadata( $attach_id, $newimg );
@@ -559,10 +548,9 @@ class vaGenerateImage
 	    //}
 	   	
 	    if(!is_wp_error( $attach_id ) ){
-	    	grp_post::grp_log('add_attachment post_id ='.$post_id .'attachment_id='.$attach_id);
+
 	    	set_post_thumbnail( $post_id, $attach_id );	
 	    }else{
-	    	grp_post::grp_log('delete_post ='.$post_id);
 	    	//wp_delete_post( $post_id );
 	    }
 	     

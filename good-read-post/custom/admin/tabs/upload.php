@@ -34,7 +34,7 @@
 				contentType: false,
 				success: function(response)
 				{
-
+					document.location.reload();
 				}
 			});
 		});

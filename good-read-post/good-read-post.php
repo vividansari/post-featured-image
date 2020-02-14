@@ -8,7 +8,7 @@
  * Author URI:        http://vividwebsolutions.in/
  * Requires at least: 3.0.0
  * Tested up to:      4.4.2
- * 
+ *
  * @package grp_post
  */
 if ( ! defined( 'ABSPATH' ) ) {
@@ -51,7 +51,7 @@ final class grp_post {
 		//add_action( 'wp_enqueue_scripts', array( $this, 'grp_post_css' ), 999 );
 		//add_action( 'wp_enqueue_scripts', array( $this, 'grp_post_js' ) );
 		add_action( 'admin_enqueue_scripts' , array( $this, 'grp_post_admin_script' )  );
-		
+
 	}
 
 	/**
@@ -106,7 +106,7 @@ final class grp_post {
   	}
 
 
-	
+
 } // End Class
 
 /**
@@ -126,12 +126,22 @@ final class grp_post {
 register_activation_hook( __FILE__, 'grp_activation' );
 function grp_activation(){
 	if ( !wp_next_scheduled( 'grp_get_data_cron' ) ) {
-		wp_schedule_event( current_time( 'timestamp' ), 'every_five_minutes', 'grp_get_data_cron');
+		wp_schedule_event( current_time( 'timestamp' ), 'every_two_minutes', 'grp_get_data_cron');
+		// wp_schedule_event( current_time( 'timestamp' ), 'every_two_minutes', 'grp_get_data_cron');
 	}
+
 }
 
 register_deactivation_hook( __FILE__, 'grp_deactivation' );
 function grp_deactivation() {
     wp_clear_scheduled_hook( 'grp_get_data_cron' );
+    delete_option( 'grp_cron_tag_key' );
+    delete_option( 'grp_cron_current_page' );
+    delete_option( 'grp_cron_completed' );
+    delete_option( 'grp_cron_author_key' );
+    delete_option( 'grp_cron_through_tag_or_author' );
+    delete_option( 'grp_tag_csv_key' );
+    delete_option( 'grp__author_names' );
+    delete_option(  'grp_cron_tag_current_value' );
 }
 ?>
