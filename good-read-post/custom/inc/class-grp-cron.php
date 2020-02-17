@@ -92,8 +92,8 @@ class grpCron
 						if($cron_through_tag_or_author == 1){
 							grp_post::grp_log("Current Tag = $tag ,Current page Number = $current_page");
 							
-							//$total_page = 100;  //!!! important
-							$total_page = 2;  //!!! important
+							$total_page = 100;  //!!! important
+							//$total_page = 2;  //!!! important
 							
 							$current_tag_value = $new_tag_arr[$tag_key];
 							update_option('grp_cron_tag_current_value', $current_tag_value);
@@ -114,7 +114,9 @@ class grpCron
 							
 
 							if($total_page < $current_page){
-								update_option( 'grp_cron_through_tag_or_author', 2 );
+								if( !empty( $author_arr ) ){
+									update_option( 'grp_cron_through_tag_or_author', 2 );
+								}
 								update_option( 'grp_cron_current_page', '' );
 								
 								$done_tag = get_option('grp_done_tag');

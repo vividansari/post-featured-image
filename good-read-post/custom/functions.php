@@ -152,6 +152,7 @@ function get_grp_tag_csv()
           {
             update_option('grp_tag_csv_key', $post);
           }
+          unlink($new_filename);
           echo "success";
         }
         else{
@@ -227,6 +228,7 @@ function get_grp_author_csv()
           }
           fclose($_file);
           echo "success";
+          unlink($new_filename);
 
         }
         else{

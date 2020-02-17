@@ -126,7 +126,7 @@ final class grp_post {
 register_activation_hook( __FILE__, 'grp_activation' );
 function grp_activation(){
 	if ( !wp_next_scheduled( 'grp_get_data_cron' ) ) {
-		wp_schedule_event( current_time( 'timestamp' ), 'every_two_minutes', 'grp_get_data_cron');
+		wp_schedule_event( current_time( 'timestamp' ), 'every_five_minutes', 'grp_get_data_cron');
 		// wp_schedule_event( current_time( 'timestamp' ), 'every_two_minutes', 'grp_get_data_cron');
 	}
 
