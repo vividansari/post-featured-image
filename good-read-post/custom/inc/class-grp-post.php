@@ -196,27 +196,21 @@ class grpPost
 		    require_once( ABSPATH . 'wp-admin/includes/post.php' );
 		}
 
-			$after_content = '<br>
-				<br>
-
-				Like <INSERT AUTHOR>?
-
-				Buy <INSERT AUTHOR> products
-
-				[easyazon_link keywords="<INSERT AUTHOR>" locale="US" tag="bestsellerlisting-20"]<img class="alignnone wp-image-63470 size-medium" src="https://loveinquotes.com/wp-content/uploads/2019/12/amazon-logo.png" width="300" height="92" />[/easyazon_link]
-
-				Do you Like Positive words and poetry?
-
+			$after_content = 'Do you Like Positive words, poetry and words to describe someone you love?
 				Check out
 				<table>
 				<tbody>
 				<tr>
 				<td><a href="https://positivewordsdictionary.com/">https://positivewordsdictionary.com/</a></td>
+				</tr>
+                <tr>
 				<td><a href="https://wordsthatrhymewith.com/">https://wordsthatrhymewith.com/</a></td>
 				</tr>
+				<tr>
+				<td><a href="https://wordstodescribesomeone.com/">https://wordstodescribesomeone.com/</a></td>
+				</tr>
 				</tbody>
-				</table>
-				';
+				</table>';
 				if( isset( $tag_data['author'] ) ){
 					$after_content = str_replace('<INSERT AUTHOR>',$tag_data['author'],$after_content);
 				}else{
