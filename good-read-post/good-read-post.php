@@ -9,7 +9,7 @@
  * Requires at least: 3.0.0
  * Tested up to:      4.4.2
  *
- * @package grp_post
+ * @package grp_post  
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
